@@ -1,6 +1,5 @@
 package fr.ducloyer.lotrtcg;
 
-import fr.ducloyer.lotrtcg.controller.CardController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,13 +15,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Image icon = new Image(getClass().getResourceAsStream("/images/ring-icon-32.png"));
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/card.fxml"));
+        loader.setLocation(getClass().getResource("/view/board.fxml"));
         AnchorPane anchorPane = loader.load();
-        loader.<CardController>getController().displayCard(1364);
 
         primaryStage.setTitle("LOTR-TCG");
-        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("/images/ring-icon-32.png")));
+        primaryStage.getIcons().add(icon);
         primaryStage.setScene(new Scene(anchorPane));
         primaryStage.show();
     }
