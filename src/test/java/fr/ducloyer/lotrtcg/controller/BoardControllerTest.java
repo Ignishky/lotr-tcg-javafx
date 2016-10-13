@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -29,29 +30,34 @@ public class BoardControllerTest extends GuiTest {
 
     @Test
     public void should_load_board() {
-        ImageView companion1 = find("#companion1");
-        assertThat(companion1.getFitWidth()).isEqualTo(108.2);
-        assertThat(companion1.getFitHeight()).isEqualTo(150.6);
-        assertThat(companion1.getRotate()).isEqualTo(0.0);
+        AnchorPane companion1 = find("#companion1");
+        assertThat(companion1.getChildren().get(0)).isInstanceOf(ImageView.class);
 
-        ImageView companion2 = find("#companion2");
-        assertThat(companion2.getFitWidth()).isEqualTo(108.2);
-        assertThat(companion2.getFitHeight()).isEqualTo(150.6);
-        assertThat(companion2.getRotate()).isEqualTo(0.0);
+        AnchorPane companion2 = find("#companion2");
+        assertThat(companion2.getChildren().get(0)).isInstanceOf(ImageView.class);
 
-        ImageView minion1 = find("#minion1");
-        assertThat(minion1.getFitWidth()).isEqualTo(108.2);
-        assertThat(minion1.getFitHeight()).isEqualTo(150.6);
-        assertThat(minion1.getRotate()).isEqualTo(0.0);
+        AnchorPane minion1 = find("#minion1");
+        assertThat(minion1.getChildren().get(0)).isInstanceOf(ImageView.class);
 
-        ImageView minion2 = find("#minion2");
-        assertThat(minion2.getFitWidth()).isEqualTo(108.2);
-        assertThat(minion2.getFitHeight()).isEqualTo(150.6);
-        assertThat(minion2.getRotate()).isEqualTo(0.0);
+        AnchorPane minion2 = find("#minion2");
+        assertThat(minion2.getChildren().get(0)).isInstanceOf(ImageView.class);
+
+        Button fight = find("#fight");
+        assertThat(fight.getLayoutX()).isEqualTo(92.0);
+        assertThat(fight.getLayoutY()).isEqualTo(338.0);
 
         assertThat(companion1.getLayoutY()).isEqualTo(companion2.getLayoutY());
         assertThat(companion1.getLayoutX()).isEqualTo(minion1.getLayoutX());
         assertThat(minion1.getLayoutY()).isEqualTo(minion2.getLayoutY());
         assertThat(companion2.getLayoutX()).isEqualTo(minion2.getLayoutX());
+    }
+
+    @Test
+    public void should_wound_companion_for_the_fight() {
+        Button fight = find("#fight");
+        click(fight);
+
+        AnchorPane companion1 = find("#companion1");
+        assertThat(companion1.getChildren().get(1).isVisible()).isTrue();
     }
 }

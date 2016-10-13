@@ -5,32 +5,43 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import fr.ducloyer.lotrtcg.model.CardLoader;
+import javafx.scene.layout.AnchorPane;
 
 public class BoardController implements Initializable {
 
     private static final CardLoader LOADER = CardLoader.getInstance();
 
     @FXML
-    private ImageView companion1;
+    private CardController companion1Controller;
 
     @FXML
-    private ImageView companion2;
+    private CardController companion2Controller;
 
     @FXML
-    private ImageView minion1;
+    private CardController minion1Controller;
 
     @FXML
-    private ImageView minion2;
+    private CardController minion2Controller;
+
+    @FXML
+    private Button fight;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        companion1.setImage(new Image(getClass().getResourceAsStream(LOADER.loadCard(1290).getPicture())));
-        companion2.setImage(new Image(getClass().getResourceAsStream(LOADER.loadCard(1364).getPicture())));
-        minion1.setImage(new Image(getClass().getResourceAsStream(LOADER.loadCard(1176).getPicture())));
-        minion2.setImage(new Image(getClass().getResourceAsStream(LOADER.loadCard(1191).getPicture())));
+        companion1Controller.displayCard(1290);
+        companion2Controller.displayCard(1364);
+        minion1Controller.displayCard(1176);
+        minion2Controller.displayCard(1191);
+    }
+
+    @FXML
+    public void startFight() {
+        companion1Controller.displayWound();
+        companion2Controller.displayWound();
     }
 }
