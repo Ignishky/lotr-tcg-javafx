@@ -6,5 +6,6 @@ import lombok.Data;
 public class Card {
 
     private final int collection;
+    private final String name;
     private final String picture;
 }

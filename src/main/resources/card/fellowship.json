@@ -5,18 +5,22 @@
   },
   {
     "collection" : 1176,
+    "name" : "Goblin Marksman",
     "picture" : "/card/Fellowship/LOTR-EN01176.jpg"
   },
   {
     "collection" : 1191,
+    "name" : "Moria Scout",
     "picture" : "/card/Fellowship/LOTR-EN01191.jpg"
   },
   {
     "collection" : 1290,
+    "name" : "Frodo",
     "picture" : "/card/Fellowship/LOTR-EN01290.jpg"
   },
   {
     "collection" : 1364,
+    "name" : "Gandalf",
     "picture" : "/card/Fellowship/LOTR-EN01364.jpg"
   }
 ]

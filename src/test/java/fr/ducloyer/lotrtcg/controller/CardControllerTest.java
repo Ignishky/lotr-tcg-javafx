@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
@@ -38,7 +37,7 @@ public class CardControllerTest extends GuiTest {
 
     @Test
     public void should_load_card () {
-        loader.<CardController>getController().displayCard(1364);
+        loader.<CardController>getController().addCard(1364);
 
         ImageView card = find("#card");
 

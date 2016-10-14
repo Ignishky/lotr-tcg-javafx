@@ -23,18 +23,23 @@ public class CardController implements Initializable {
     @FXML
     private Label oneWound;
 
+    private Card aCard;
+
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        displayCard(0);
+        aCard = addCard(0);
     }
 
-    public void displayCard(int number) {
+    public Card addCard(int number) {
         oneWound.setVisible(false);
         Card aCard = LOADER.loadCard(number);
         card.setImage(new Image(getClass().getResourceAsStream(aCard.getPicture())));
+        this.aCard = aCard;
+        return aCard;
     }
 
-    public void displayWound() {
+    public Card addWound() {
         oneWound.setVisible(true);
+        return aCard;
     }
 }

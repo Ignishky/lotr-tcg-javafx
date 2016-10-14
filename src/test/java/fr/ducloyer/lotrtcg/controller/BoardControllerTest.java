@@ -1,18 +1,18 @@
 package fr.ducloyer.lotrtcg.controller;
 
-import static com.google.common.base.Throwables.propagate;
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import org.junit.Test;
 import org.loadui.testfx.GuiTest;
+
+import java.io.IOException;
+
+import static com.google.common.base.Throwables.*;
+import static org.assertj.core.api.Assertions.*;
 
 public class BoardControllerTest extends GuiTest {
 
@@ -50,6 +50,9 @@ public class BoardControllerTest extends GuiTest {
         assertThat(companion1.getLayoutX()).isEqualTo(minion1.getLayoutX());
         assertThat(minion1.getLayoutY()).isEqualTo(minion2.getLayoutY());
         assertThat(companion2.getLayoutX()).isEqualTo(minion2.getLayoutX());
+
+        Label info = find("#info");
+        assertThat(info.getText()).isEqualTo("Play card Frodo");
     }
 
     @Test
@@ -59,5 +62,8 @@ public class BoardControllerTest extends GuiTest {
 
         AnchorPane companion1 = find("#companion1");
         assertThat(companion1.getChildren().get(1).isVisible()).isTrue();
+
+        Label info = find("#info");
+        assertThat(info.getText()).isEqualTo("Frodo has been wounded");
     }
 }
