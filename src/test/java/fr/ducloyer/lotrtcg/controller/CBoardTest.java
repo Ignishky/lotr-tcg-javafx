@@ -14,7 +14,7 @@ import java.io.IOException;
 import static com.google.common.base.Throwables.*;
 import static org.assertj.core.api.Assertions.*;
 
-public class BoardControllerTest extends GuiTest {
+public class CBoardTest extends GuiTest {
 
     @Override
     protected Parent getRootNode() {
@@ -31,16 +31,16 @@ public class BoardControllerTest extends GuiTest {
     @Test
     public void should_load_board() {
         AnchorPane companion1 = find("#companion1");
-        assertThat(companion1.getChildren().get(0)).isInstanceOf(ImageView.class);
+        assertThat(companion1.getChildren().get(0)).isInstanceOf(AnchorPane.class);
 
         AnchorPane companion2 = find("#companion2");
-        assertThat(companion2.getChildren().get(0)).isInstanceOf(ImageView.class);
+        assertThat(companion2.getChildren().get(0)).isInstanceOf(AnchorPane.class);
 
         AnchorPane minion1 = find("#minion1");
-        assertThat(minion1.getChildren().get(0)).isInstanceOf(ImageView.class);
+        assertThat(minion1.getChildren().get(0)).isInstanceOf(AnchorPane.class);
 
         AnchorPane minion2 = find("#minion2");
-        assertThat(minion2.getChildren().get(0)).isInstanceOf(ImageView.class);
+        assertThat(minion2.getChildren().get(0)).isInstanceOf(AnchorPane.class);
 
         Button fight = find("#fight");
         assertThat(fight.getLayoutX()).isEqualTo(92.0);

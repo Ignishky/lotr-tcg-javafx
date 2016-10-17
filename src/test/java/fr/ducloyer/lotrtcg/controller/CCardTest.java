@@ -1,19 +1,18 @@
 package fr.ducloyer.lotrtcg.controller;
 
-import static com.google.common.base.Throwables.propagate;
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-
 import org.junit.Test;
 import org.loadui.testfx.GuiTest;
 
-public class CardControllerTest extends GuiTest {
+import java.io.IOException;
+
+import static com.google.common.base.Throwables.propagate;
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class CCardTest extends GuiTest {
 
     private FXMLLoader loader;
 
@@ -37,7 +36,7 @@ public class CardControllerTest extends GuiTest {
 
     @Test
     public void should_load_card () {
-        loader.<CardController>getController().addCard(1364);
+        loader.<CCard>getController().addCard(1364);
 
         ImageView card = find("#card");
 
