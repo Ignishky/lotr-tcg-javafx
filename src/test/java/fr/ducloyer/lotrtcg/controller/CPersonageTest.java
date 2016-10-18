@@ -1,7 +1,6 @@
 package fr.ducloyer.lotrtcg.controller;
 
 import fr.ducloyer.lotrtcg.model.Card;
-import fr.ducloyer.lotrtcg.model.Personage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
@@ -37,17 +36,18 @@ public class CPersonageTest extends GuiTest {
 
     @Test
     public void should_init_personage() {
-        Personage personage = loader.<CPersonage>getController().addPersonage(1364);
+        CPersonage controller = loader.getController();
+        controller.addPersonage(1364);
 
-        assertThat(personage.getName()).isEqualTo(personage.getPersonage().getName());
-        assertThat(personage.getNbWound()).isEqualTo(0);
-        assertThat(personage.getPersonage()).isEqualTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg"));
+        assertThat(controller.getName()).isEqualTo(controller.getPersonage().getName());
+        assertThat(controller.getNbWound()).isEqualTo(0);
+        assertThat(controller.getPersonage()).isEqualTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg"));
     }
 
     @Test
     public void should_add_wound() {
         CPersonage controller = loader.getController();
-        Personage personage = controller.addPersonage(1364);
+        controller.addPersonage(1364);
         controller.addWound();
 
         Label label = find("#oneWound");

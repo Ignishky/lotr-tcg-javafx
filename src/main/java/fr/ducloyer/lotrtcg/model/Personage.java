@@ -8,13 +8,12 @@ public class Personage {
     private Card personage;
     private int nbWound;
 
-    public Personage(Card personage) {
-        this.personage = personage;
-        nbWound = 0;
-    }
-
     public String getName() {
         return personage.getName();
+    }
+
+    public void addPersonage(Card personage) {
+        this.personage = personage;
     }
 
     public void addWound() {
