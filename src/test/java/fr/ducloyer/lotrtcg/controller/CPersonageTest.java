@@ -3,45 +3,45 @@ package fr.ducloyer.lotrtcg.controller;
 import fr.ducloyer.lotrtcg.model.Card;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import org.junit.Test;
-import org.loadui.testfx.GuiTest;
-import org.loadui.testfx.exceptions.NoNodesVisibleException;
+import org.testfx.framework.junit.ApplicationTest;
 
 import java.io.IOException;
 
-import static com.google.common.base.Throwables.propagate;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.equalTo;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.matcher.base.NodeMatchers.isInvisible;
+import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
-public class CPersonageTest extends GuiTest {
+public class CPersonageTest extends ApplicationTest {
 
-    private FXMLLoader loader;
+    private FXMLLoader loader = new FXMLLoader();
 
     @Override
-    protected Parent getRootNode() {
-        try {
-            loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/personage.fxml"));
-            return loader.<AnchorPane>load();
-        } catch (IOException ex) {
-            throw propagate(ex);
-        }
+    public void start(Stage stage) throws IOException {
+        loader.setLocation(getClass().getResource("/view/personage.fxml"));
+        Parent anchorPane = loader.load();
+        stage.setScene(new Scene(anchorPane, 109, 150));
+        stage.show();
     }
 
-    @Test(expected = NoNodesVisibleException.class)
+    @Test
     public void should_not_display_wound_after_init() {
-        find("#oneWound");
+        verifyThat("#oneWound", isInvisible());
     }
 
     @Test
     public void should_init_personage() {
+
         CPersonage controller = loader.getController();
         controller.addPersonage(1364);
 
-        assertThat(controller.getName()).isEqualTo(controller.getPersonage().getName());
-        assertThat(controller.getNbWound()).isEqualTo(0);
-        assertThat(controller.getPersonage()).isEqualTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg"));
+        verifyThat(controller.getName(), equalTo(controller.getPersonage().getName()));
+        verifyThat(controller.getNbWound(), equalTo(0));
+        verifyThat(controller.getPersonage(), equalTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg")));
+        verifyThat("#oneWound", isInvisible());
     }
 
     @Test
@@ -50,7 +50,6 @@ public class CPersonageTest extends GuiTest {
         controller.addPersonage(1364);
         controller.addWound();
 
-        Label label = find("#oneWound");
-        assertThat(label.isVisible()).isTrue();
+        verifyThat("#oneWound", isVisible());
     }
 }

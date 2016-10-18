@@ -2,45 +2,51 @@ package fr.ducloyer.lotrtcg.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.junit.Test;
-import org.loadui.testfx.GuiTest;
+import org.testfx.api.FxAssertContext;
+import org.testfx.framework.junit.ApplicationTest;
+import org.testfx.service.finder.NodeFinder;
 
 import java.io.IOException;
 
-import static com.google.common.base.Throwables.propagate;
-import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.Matchers.closeTo;
+import static org.hamcrest.Matchers.equalTo;
+import static org.testfx.api.FxAssert.verifyThat;
+import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
-public class CCardTest extends GuiTest {
+public class CCardTest extends ApplicationTest {
 
-    private FXMLLoader loader;
+    private static final NodeFinder NODE_FINDER = new FxAssertContext().getNodeFinder();
+    private FXMLLoader loader = new FXMLLoader();
 
     @Override
-    protected Parent getRootNode() {
-        try {
-            loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("/view/card.fxml"));
-            return loader.<AnchorPane>load();
-        } catch (IOException ex) {
-            throw propagate(ex);
-        }
+    public void start(Stage stage) throws IOException {
+        loader.setLocation(getClass().getResource("/view/card.fxml"));
+        Parent anchorPane = loader.load();
+        stage.setScene(new Scene(anchorPane, 109, 150));
+        stage.show();
     }
 
     @Test
     public void should_load_Back_card() {
-        ImageView card = find("#card");
-        assertThat(card.getImage().getWidth()).isEqualTo(357.0);
-        assertThat(card.getImage().getHeight()).isEqualTo(500.0);
+        ImageView card = NODE_FINDER.lookup("#card").queryFirst();
+
+        verifyThat(card, isVisible());
+        verifyThat(card.getFitWidth(), equalTo(109.0));
+        verifyThat(card.getFitHeight(), equalTo(150.0));
     }
 
     @Test
     public void should_load_card () {
         loader.<CCard>getController().addCard(1364);
 
-        ImageView card = find("#card");
+        ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").queryFirst();
 
-        assertThat(card.getImage().getWidth()).isEqualTo(357.0);
-        assertThat(card.getImage().getHeight()).isEqualTo(497.0);
+        verifyThat(card, isVisible());
+        verifyThat(card.getFitWidth(), closeTo(109.0, 0.1));
+        verifyThat(card.getFitHeight(), closeTo(150.0, 0.1));
     }
 }
