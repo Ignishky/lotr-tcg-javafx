@@ -9,13 +9,16 @@ import lombok.NoArgsConstructor;
 @Data
 public class Card {
 
-    private int collection;
-    private String name;
-    private String picture;
+    private static final CardLoader LOADER = CardLoader.getInstance();
 
-    public void copy(Card aCard) {
-        collection = aCard.collection;
-        name = aCard.name;
-        picture = aCard.picture;
+    protected int collection;
+    protected String name;
+    protected String picture;
+
+    public void copy(int number) {
+        Card card = LOADER.loadCard(number);
+        collection = card.collection;
+        name = card.name;
+        picture = card.picture;
     }
 }
