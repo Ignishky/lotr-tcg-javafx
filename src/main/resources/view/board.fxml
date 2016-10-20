@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.TextArea?>
 
-<AnchorPane prefHeight="385.0" prefWidth="250.0" fx:controller="fr.ducloyer.lotrtcg.controller.CBoard"
-            xmlns="http://javafx.com/javafx/8.0.102-ea" xmlns:fx="http://javafx.com/fxml/1">
-  <fx:include fx:id="companion1" layoutX="15.0" layoutY="165.0" source="personage.fxml" />
-  <fx:include fx:id="companion2" layoutX="125.0" layoutY="165.0" source="personage.fxml" />
-  <fx:include fx:id="minion1" layoutX="15.0" layoutY="15.0" source="personage.fxml" />
-  <fx:include fx:id="minion2" layoutX="125.0" layoutY="15.0" source="personage.fxml" />
-  <Button fx:id="fight" layoutX="92.0" layoutY="338.0" mnemonicParsing="false" onAction="#startFight" text="Fight" />
-  <Label fx:id="info" layoutY="363.0" prefHeight="16.0" prefWidth="250.0">TOTO</Label>
+<AnchorPane prefHeight="450.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ducloyer.lotrtcg.controller.CBoard">
+   <children>
+     <fx:include fx:id="companion1" layoutX="15.0" layoutY="165.0" source="personage.fxml" />
+     <fx:include fx:id="companion2" layoutX="125.0" layoutY="165.0" source="personage.fxml" />
+     <fx:include fx:id="minion1" layoutX="15.0" layoutY="15.0" source="personage.fxml" />
+     <fx:include fx:id="minion2" layoutX="125.0" layoutY="15.0" source="personage.fxml" />
+     <Button fx:id="fight" layoutX="100.0" layoutY="328.0" mnemonicParsing="false" onAction="#startFight" text="Fight" />
+     <TextArea fx:id="info" layoutY="363.0" prefHeight="88.0" prefWidth="250.0" />
+   </children>
 </AnchorPane>

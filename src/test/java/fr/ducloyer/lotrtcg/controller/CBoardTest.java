@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -16,9 +16,7 @@ import java.io.IOException;
 
 import static org.hamcrest.Matchers.*;
 import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.matcher.base.NodeMatchers.hasText;
-import static org.testfx.matcher.base.NodeMatchers.isInvisible;
-import static org.testfx.matcher.base.NodeMatchers.isVisible;
+import static org.testfx.matcher.base.NodeMatchers.*;
 
 public class CBoardTest extends ApplicationTest {
 
@@ -53,16 +51,16 @@ public class CBoardTest extends ApplicationTest {
 
         Button fight = NODE_FINDER.lookup("#fight").queryFirst();
         verifyThat(fight, isVisible());
-        verifyThat(fight.getLayoutX(), equalTo(92.0));
-        verifyThat(fight.getLayoutY(), equalTo(338.0));
+        verifyThat(fight.getLayoutX(), equalTo(100.0));
+        verifyThat(fight.getLayoutY(), equalTo(328.0));
 
         verifyThat(companion1.getLayoutY(), equalTo(companion2.getLayoutY()));
         verifyThat(companion1.getLayoutX(), equalTo(minion1.getLayoutX()));
         verifyThat(minion1.getLayoutY(), equalTo(minion2.getLayoutY()));
         verifyThat(companion2.getLayoutX(), equalTo(minion2.getLayoutX()));
 
-        Label info = NODE_FINDER.lookup("#info").queryFirst();
-        verifyThat(info, hasText("Play card Frodo"));
+        TextArea info = NODE_FINDER.lookup("#info").queryFirst();
+        verifyThat(info.getText(), equalTo("Play card Frodo.\nPlay card Gandalf.\nPlay card Goblin Marksman.\nPlay card Moria Scout.\n"));
     }
 
     @Test
@@ -72,7 +70,7 @@ public class CBoardTest extends ApplicationTest {
         AnchorPane companion1 = NODE_FINDER.lookup("#companion1").queryFirst();
         verifyThat(companion1.getChildren().get(1), isVisible());
 
-        Label info = NODE_FINDER.lookup("#info").queryFirst();
-        verifyThat(info, hasText("Frodo has been wounded"));
+        TextArea info = NODE_FINDER.lookup("#info").queryFirst();
+        verifyThat(info.getText(), equalTo("Play card Frodo.\nPlay card Gandalf.\nPlay card Goblin Marksman.\nPlay card Moria Scout.\nFrodo has been wounded.\n"));
     }
 }

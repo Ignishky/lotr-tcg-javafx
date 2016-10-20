@@ -3,7 +3,7 @@ package fr.ducloyer.lotrtcg.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -26,12 +26,12 @@ public class CBoard implements Initializable {
     private Button fight;
 
     @FXML
-    private Label info;
+    private TextArea info;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        Toastr.init(info);
         companion1Controller.addPersonage(1290);
-        info.setText("Play card " + companion1Controller.getName());
         companion2Controller.addPersonage(1364);
         minion1Controller.addPersonage(1176);
         minion2Controller.addPersonage(1191);
@@ -40,6 +40,6 @@ public class CBoard implements Initializable {
     @FXML
     public void startFight() {
         companion1Controller.addWound();
-        info.setText(companion1Controller.getName() + " has been wounded");
+        Toastr.append(companion1Controller.getName() + " has been wounded.");
     }
 }
