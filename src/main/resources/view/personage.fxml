@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.image.ImageView?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ducloyer.lotrtcg.controller.CPersonage">
    <children>
        <fx:include fx:id="personage" source="card.fxml" />
 
-       <Label fx:id="oneWound" layoutX="27.0" layoutY="108.0" text="1 Wound">
-           <font>
-               <Font name="System Bold" size="12.0" />
-           </font>
-       </Label>
+       <ImageView fx:id="oneWound" layoutX="10.0" layoutY="20.0" visible="false" />
    </children>
 </AnchorPane>

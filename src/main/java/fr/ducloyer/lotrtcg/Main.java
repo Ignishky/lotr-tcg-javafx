@@ -15,7 +15,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Image icon = new Image(getClass().getResourceAsStream("/images/ring-icon-32.png"));
+        Image icon = new Image("/images/ring-icon-32.png");
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/board.fxml"));
         AnchorPane anchorPane = loader.load();
