@@ -19,7 +19,7 @@ public class CardLoader {
     private static CardLoader instance;
 
     private CardLoader() {
-        try (BufferedReader json = new BufferedReader(new FileReader(getClass().getResource("/card/fellowship.json").getFile()))) {
+        try (BufferedReader json = new BufferedReader(new FileReader("src/main/resources/card/fellowship.json"))) {
             List<Card> tmpCards = GSON.fromJson(json, new TypeToken<List<Card>>() {}.getType());
             cards = tmpCards.stream().collect(toMap(Card::getCollection, c -> c));
         }

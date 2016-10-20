@@ -12,6 +12,7 @@ import org.testfx.service.finder.NodeFinder;
 
 import java.io.IOException;
 
+import static fr.ducloyer.lotrtcg.utils.ImageMatchers.hasImage;
 import static org.hamcrest.Matchers.closeTo;
 import static org.hamcrest.Matchers.equalTo;
 import static org.testfx.api.FxAssert.verifyThat;
@@ -37,6 +38,7 @@ public class CCardTest extends ApplicationTest {
         verifyThat(card, isVisible());
         verifyThat(card.getFitWidth(), equalTo(109.0));
         verifyThat(card.getFitHeight(), equalTo(150.0));
+        verifyThat(card.getImage(), hasImage("/card/Back_V.jpg"));
     }
 
     @Test
@@ -48,5 +50,6 @@ public class CCardTest extends ApplicationTest {
         verifyThat(card, isVisible());
         verifyThat(card.getFitWidth(), closeTo(109.0, 0.1));
         verifyThat(card.getFitHeight(), closeTo(150.0, 0.1));
+        verifyThat(card.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
     }
 }

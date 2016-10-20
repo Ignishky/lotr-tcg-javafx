@@ -21,6 +21,6 @@ public class CCard extends Card implements Initializable {
 
     public void addCard(int number) {
         super.copy(number);
-        card.setImage(new Image(getClass().getResourceAsStream(picture)));
+        card.setImage(new Image(picture));
     }
 }
