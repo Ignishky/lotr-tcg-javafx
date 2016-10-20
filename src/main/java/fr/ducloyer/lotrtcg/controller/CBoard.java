@@ -6,7 +6,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 public class CBoard implements Initializable {
 
@@ -16,11 +19,17 @@ public class CBoard implements Initializable {
     @FXML
     private CPersonage companion2Controller;
 
+    private List<CPersonage> companions;
+    private int nbCompanions = 0;
+
     @FXML
     private CPersonage minion1Controller;
 
     @FXML
     private CPersonage minion2Controller;
+
+    private List<CPersonage> minions;
+    private int nbMinions = 0;
 
     @FXML
     private Button fight;
@@ -31,10 +40,18 @@ public class CBoard implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Toastr.init(info);
-        companion1Controller.addPersonage(1290);
-        companion2Controller.addPersonage(1364);
-        minion1Controller.addPersonage(1176);
-        minion2Controller.addPersonage(1191);
+        companions = newArrayList(companion1Controller, companion2Controller);
+        minions = newArrayList(minion1Controller, minion2Controller);
+    }
+
+    public void addCompanion(int collection) {
+        companions.get(nbCompanions).addPersonage(collection);
+        nbCompanions++;
+    }
+
+    public void addMinion(int collection) {
+        minions.get(nbMinions).addPersonage(collection);
+        nbMinions++;
     }
 
     @FXML

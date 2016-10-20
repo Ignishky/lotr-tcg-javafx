@@ -27,6 +27,11 @@ public class CBoardTest extends ApplicationTest {
     public void start(Stage stage) throws IOException {
         loader.setLocation(getClass().getResource("/view/board.fxml"));
         Parent anchorPane = loader.load();
+        CBoard cBoard = loader.getController();
+        cBoard.addCompanion(1290);
+        cBoard.addCompanion(1364);
+        cBoard.addMinion(1176);
+        cBoard.addMinion(1191);
         stage.setScene(new Scene(anchorPane, 250, 350));
         stage.show();
     }
