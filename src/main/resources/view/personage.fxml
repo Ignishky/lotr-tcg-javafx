@@ -4,9 +4,6 @@
 <?import javafx.scene.image.ImageView?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ducloyer.lotrtcg.controller.CPersonage">
-   <children>
-       <fx:include fx:id="personage" source="card.fxml" />
-
-       <ImageView fx:id="oneWound" layoutX="10.0" layoutY="20.0" visible="false" />
-   </children>
+   <fx:include fx:id="personage" source="card.fxml" />
+   <ImageView fx:id="oneWound" layoutX="10.0" layoutY="20.0" visible="false" />
 </AnchorPane>
