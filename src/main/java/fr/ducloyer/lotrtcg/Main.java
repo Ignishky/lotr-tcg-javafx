@@ -7,10 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class Main extends Application {
 
     public static void main(String[] args) {
+        log.info("Start a new game.");
+
         launch(args);
     }
 

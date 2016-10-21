@@ -5,10 +5,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import lombok.extern.slf4j.Slf4j;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+@Slf4j
 public class CPersonage extends Personage implements Initializable {
 
     @FXML
@@ -29,6 +31,7 @@ public class CPersonage extends Personage implements Initializable {
     }
 
     public void addWound() {
+        log.info("{} has been wounded", getName());
         super.addWound();
         oneWound.setVisible(true);
         Toastr.append(getName() + " has been wounded.");

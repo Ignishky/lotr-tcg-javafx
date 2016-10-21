@@ -84,10 +84,5 @@ public class CBoardTest extends ApplicationTest {
         verifyThat(minion2.getChildren().get(1), isVisible());
 
         verifyThat(info.getText(), endsWith("Moria Scout has been wounded.\n"));
-
-        clickOn("#fight");
-
-        verifyThat(companion1.getChildren().get(2), isVisible());
-        verifyThat(info.getText(), endsWith("Frodo has been wounded.\n"));
     }
 }

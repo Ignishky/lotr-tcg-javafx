@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import lombok.extern.slf4j.Slf4j;
 
 import java.net.URL;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.ResourceBundle;
 
 import static com.google.common.collect.Lists.newArrayList;
 
+@Slf4j
 public class CBoard implements Initializable {
 
     @FXML
@@ -46,11 +48,13 @@ public class CBoard implements Initializable {
     }
 
     public void addCompanion(int collection) {
+        log.info("Add companion {}", collection);
         companions.get(nbCompanions).addPersonage(collection);
         nbCompanions++;
     }
 
     public void addMinion(int collection) {
+        log.info("Add minion {}", collection);
         minions.get(nbMinions).addPersonage(collection);
         nbMinions++;
     }
