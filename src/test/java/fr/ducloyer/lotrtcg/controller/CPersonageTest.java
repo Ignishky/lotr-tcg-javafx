@@ -40,7 +40,7 @@ public class CPersonageTest extends ApplicationTest {
 
         verifyThat(controller.getName(), equalTo(controller.getPersonage().getName()));
         verifyThat(controller.getNbWound(), equalTo(0));
-        verifyThat(controller.getPersonage(), equalTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg")));
+        verifyThat(controller.getPersonage(), equalTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7)));
         verifyThat("#oneWound", isInvisible());
     }
 

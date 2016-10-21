@@ -14,11 +14,13 @@ public class Card {
     protected int collection;
     protected String name;
     protected String picture;
+    protected int strength;
 
     public void copy(int number) {
         Card card = LOADER.loadCard(number);
         collection = card.collection;
         name = card.name;
         picture = card.picture;
+        strength = card.strength;
     }
 }

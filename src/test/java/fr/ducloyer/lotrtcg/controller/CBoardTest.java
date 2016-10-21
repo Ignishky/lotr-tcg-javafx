@@ -76,6 +76,18 @@ public class CBoardTest extends ApplicationTest {
         verifyThat(companion1.getChildren().get(1), isVisible());
 
         TextArea info = NODE_FINDER.lookup("#info").queryFirst();
-        verifyThat(info.getText(), equalTo("Play card Frodo.\nPlay card Gandalf.\nPlay card Goblin Marksman.\nPlay card Moria Scout.\nFrodo has been wounded.\n"));
+        verifyThat(info.getText(), endsWith("Frodo has been wounded.\n"));
+
+        clickOn("#fight");
+
+        AnchorPane minion2 = NODE_FINDER.lookup("#minion2").queryFirst();
+        verifyThat(minion2.getChildren().get(1), isVisible());
+
+        verifyThat(info.getText(), endsWith("Moria Scout has been wounded.\n"));
+
+        clickOn("#fight");
+
+        verifyThat(companion1.getChildren().get(2), isVisible());
+        verifyThat(info.getText(), endsWith("Frodo has been wounded.\n"));
     }
 }

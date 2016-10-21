@@ -9,8 +9,6 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import static java.lang.System.lineSeparator;
-
 public class CPersonage extends Personage implements Initializable {
 
     @FXML
@@ -33,5 +31,6 @@ public class CPersonage extends Personage implements Initializable {
     public void addWound() {
         super.addWound();
         oneWound.setVisible(true);
+        Toastr.append(getName() + " has been wounded.");
     }
 }

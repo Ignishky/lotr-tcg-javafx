@@ -33,6 +33,7 @@ public class CBoard implements Initializable {
 
     @FXML
     private Button fight;
+    private int fightPos = 0;
 
     @FXML
     private TextArea info;
@@ -56,7 +57,14 @@ public class CBoard implements Initializable {
 
     @FXML
     public void startFight() {
-        companion1Controller.addWound();
-        Toastr.append(companion1Controller.getName() + " has been wounded.");
+        CPersonage companion = companions.get(fightPos);
+        CPersonage minion = minions.get(fightPos);
+
+        if(companion.getStrength() > minion.getStrength()) {
+            minion.addWound();
+        } else {
+            companion.addWound();
+        }
+        fightPos++;
     }
 }

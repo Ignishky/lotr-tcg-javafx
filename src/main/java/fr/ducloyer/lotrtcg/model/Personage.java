@@ -19,4 +19,8 @@ public class Personage {
     public void addWound() {
         nbWound++;
     }
+
+    public int getStrength() {
+        return personage.getStrength();
+    }
 }
