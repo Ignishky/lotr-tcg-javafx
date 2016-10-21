@@ -33,7 +33,7 @@ public class CCardTest extends ApplicationTest {
 
     @Test
     public void should_load_Back_card() {
-        ImageView card = NODE_FINDER.lookup("#card").queryFirst();
+        ImageView card = NODE_FINDER.lookup("#card").query();
 
         verifyThat(card, isVisible());
         verifyThat(card.getFitWidth(), equalTo(109.0));
@@ -45,7 +45,7 @@ public class CCardTest extends ApplicationTest {
     public void should_load_card () {
         loader.<CCard>getController().addCard(1364);
 
-        ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").queryFirst();
+        ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").query();
 
         verifyThat(card, isVisible());
         verifyThat(card.getFitWidth(), closeTo(109.0, 0.1));
