@@ -20,9 +20,9 @@ public class CardLoader {
     private CardLoader() {
         try (BufferedReader json = new BufferedReader(new InputStreamReader(new FileInputStream(new File(getClass().getResource("/card/fellowship.json").toURI()))))) {
             List<Card> tmpCards = GSON.fromJson(json, new TypeToken<List<Card>>() {}.getType());
-            cards = tmpCards.stream().collect(toMap(Card::getCollection, c -> c));
+            cards = tmpCards.stream().collect(toMap( Card::getCollection, c -> c));
         }
-        catch (IOException |URISyntaxException e) {
+        catch (IOException | URISyntaxException e) {
             throw propagate(e);
         }
     }
