@@ -17,8 +17,6 @@
         <!-- at test time this will be overridden with snapshot version -->
         <it-plugin.version>4.4.4-SNAPSHOT</it-plugin.version>
 
-        <maven.compiler.source>1.8</maven.compiler.source><!-- Not Required for Jack -->
-        <maven.compiler.target>1.8</maven.compiler.target><!-- But kind of the point -->
         <maven.compiler.compilerId>jack</maven.compiler.compilerId>
     </properties>
 
