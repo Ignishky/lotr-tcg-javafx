@@ -16,11 +16,14 @@
     <properties>
         <!-- at test time this will be overridden with snapshot version -->
         <it-plugin.version>4.4.4-SNAPSHOT</it-plugin.version>
-
-        <maven.compiler.compilerId>jack</maven.compiler.compilerId>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>fr.ducloyer</groupId>
+            <artifactId>lotr-tcg-core</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>com.google.android</groupId>
             <artifactId>android</artifactId>
