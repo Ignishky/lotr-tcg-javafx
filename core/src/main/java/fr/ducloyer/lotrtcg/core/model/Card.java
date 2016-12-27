@@ -13,7 +13,7 @@ public class Card {
     @Getter
     public enum Name {
         GoblinMarksman(1176),
-        MoriaScaout(1191),
+        MoriaScout(1191),
         Frodo(1290),
         Gandalf(1364);
 

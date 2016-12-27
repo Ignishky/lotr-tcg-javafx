@@ -29,7 +29,7 @@ public class Main extends Application {
         cBoard.addCompanion(Frodo);
         cBoard.addCompanion(Gandalf);
         cBoard.addMinion(GoblinMarksman);
-        cBoard.addMinion(MoriaScaout);
+        cBoard.addMinion(MoriaScout);
 
         primaryStage.setTitle("LOTR-TCG");
         primaryStage.getIcons().add(new Image("/images/ring-icon-32.png"));

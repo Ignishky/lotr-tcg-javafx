@@ -32,7 +32,7 @@ public class CBoardTest extends ApplicationTest {
         cBoard.addCompanion(Frodo);
         cBoard.addCompanion(Gandalf);
         cBoard.addMinion(GoblinMarksman);
-        cBoard.addMinion(MoriaScaout);
+        cBoard.addMinion(MoriaScout);
         stage.setScene(new Scene(anchorPane, 250, 350));
         stage.show();
     }
