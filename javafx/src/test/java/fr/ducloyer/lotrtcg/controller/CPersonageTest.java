@@ -29,7 +29,7 @@ public class CPersonageTest extends ApplicationTest {
 
     @Test
     public void should_not_display_wound_after_init() {
-        verifyThat("#oneWound", isInvisible());
+        verifyThat("#woundOne", isInvisible());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class CPersonageTest extends ApplicationTest {
         verifyThat(controller.getName(), equalTo(controller.getPersonage().getName()));
         verifyThat(controller.getNbWound(), equalTo(0));
         verifyThat(controller.getPersonage(), equalTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7)));
-        verifyThat("#oneWound", isInvisible());
+        verifyThat("#woundOne", isInvisible());
     }
 
     @Test
@@ -50,6 +50,6 @@ public class CPersonageTest extends ApplicationTest {
         controller.addPersonage(1364);
         controller.addWound();
 
-        verifyThat("#oneWound", isVisible());
+        verifyThat("#woundOne", isVisible());
     }
 }

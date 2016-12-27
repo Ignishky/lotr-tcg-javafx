@@ -17,7 +17,8 @@ import java.io.IOException;
 import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
 import static org.hamcrest.Matchers.*;
 import static org.testfx.api.FxAssert.verifyThat;
-import static org.testfx.matcher.base.NodeMatchers.*;
+import static org.testfx.matcher.base.NodeMatchers.isInvisible;
+import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
 public class CBoardTest extends ApplicationTest {
 
@@ -55,7 +56,7 @@ public class CBoardTest extends ApplicationTest {
         verifyThat(minion2.getChildren().get(0), is(instanceOf(AnchorPane.class)));
         verifyThat(minion2.getChildren().get(1), isInvisible());
 
-        Button fight = NODE_FINDER.lookup("#fight").query();
+        Button fight = NODE_FINDER.lookup("#action").query();
         verifyThat(fight, isVisible());
         verifyThat(fight.getLayoutX(), equalTo(100.0));
         verifyThat(fight.getLayoutY(), equalTo(328.0));
@@ -71,7 +72,7 @@ public class CBoardTest extends ApplicationTest {
 
     @Test
     public void should_wound_companion_for_the_fight() {
-        clickOn("#fight");
+        clickOn("#action");
 
         AnchorPane companion1 = NODE_FINDER.lookup("#companion1").query();
         verifyThat(companion1.getChildren().get(1), isVisible());
@@ -79,11 +80,39 @@ public class CBoardTest extends ApplicationTest {
         TextArea info = NODE_FINDER.lookup("#info").query();
         verifyThat(info.getText(), endsWith("Frodo has been wounded.\n"));
 
-        clickOn("#fight");
+        clickOn("#action");
 
         AnchorPane minion2 = NODE_FINDER.lookup("#minion2").query();
         verifyThat(minion2.getChildren().get(1), isVisible());
 
         verifyThat(info.getText(), endsWith("Moria Scout has been wounded.\n"));
+    }
+
+    @Test
+    public void should_end_turn_when_all_companion_have_fight() {
+        Button fight = NODE_FINDER.lookup("#action").query();
+        verifyThat(fight.getText(), is("Fight"));
+        clickOn("#action");
+
+        fight = NODE_FINDER.lookup("#action").query();
+        verifyThat(fight.getText(), is("Fight"));
+        clickOn("#action");
+
+        fight = NODE_FINDER.lookup("#action").query();
+        verifyThat(fight.getText(), is("Next turn"));
+    }
+
+    @Test
+    public void should_rewound_first_companion_in_the_second_turn() {
+        clickOn("#action"); // fight 1
+        clickOn("#action"); // fight 2
+        clickOn("#action"); // next turn
+        clickOn("#action"); // fight 1
+
+        AnchorPane companion1 = NODE_FINDER.lookup("#companion1").query();
+        verifyThat(companion1.getChildren().get(2), isVisible());
+
+        TextArea info = NODE_FINDER.lookup("#info").query();
+        verifyThat(info.getText(), endsWith("Frodo has been wounded.\n"));
     }
 }

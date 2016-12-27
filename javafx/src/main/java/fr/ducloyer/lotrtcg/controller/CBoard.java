@@ -35,7 +35,7 @@ public class CBoard implements Initializable {
     private int nbMinions = 0;
 
     @FXML
-    private Button fight;
+    private Button action;
     private int fightPos = 0;
 
     @FXML
@@ -70,6 +70,17 @@ public class CBoard implements Initializable {
         } else {
             companion.addWound();
         }
-        fightPos++;
+
+        if(fightPos == companions.size()-1) {
+            action.setText("Next turn");
+            action.setOnAction( event -> {
+                Toastr.append("Start next turn");
+                fightPos = 0;
+                action.setText("Fight");
+                action.setOnAction(event1 -> startFight());
+            });
+        } else {
+            fightPos++;
+        }
     }
 }
