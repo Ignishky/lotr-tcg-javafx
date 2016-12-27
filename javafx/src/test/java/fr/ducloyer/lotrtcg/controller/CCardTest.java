@@ -13,8 +13,8 @@ import org.testfx.service.finder.NodeFinder;
 import java.io.IOException;
 
 import static fr.ducloyer.lotrtcg.utils.ImageMatchers.hasImage;
-import static org.hamcrest.Matchers.closeTo;
-import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
