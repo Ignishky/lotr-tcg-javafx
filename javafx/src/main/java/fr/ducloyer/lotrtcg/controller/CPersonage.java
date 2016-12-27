@@ -47,7 +47,7 @@ public class CPersonage extends Personage implements Initializable {
     }
 
     public void addWound() {
-        wounds.get(getNbWound()).setVisible(true);
+        wounds.get(nbWound).setVisible(true);
         super.addWound();
 
         log.info("{} has been wounded", getName());

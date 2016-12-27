@@ -6,7 +6,7 @@ import lombok.Data;
 public class Personage {
 
     private Card personage;
-    private int nbWound = 0;
+    protected int nbWound = 0;
 
     public String getName() {
         return personage.getName();

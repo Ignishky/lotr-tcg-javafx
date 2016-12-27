@@ -18,7 +18,6 @@ public class CBoard implements Initializable {
 
     @FXML
     private CPersonage companion1Controller;
-
     @FXML
     private CPersonage companion2Controller;
 
@@ -27,7 +26,6 @@ public class CBoard implements Initializable {
 
     @FXML
     private CPersonage minion1Controller;
-
     @FXML
     private CPersonage minion2Controller;
 

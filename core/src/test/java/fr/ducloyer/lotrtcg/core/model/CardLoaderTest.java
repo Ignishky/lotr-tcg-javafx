@@ -2,6 +2,7 @@ package fr.ducloyer.lotrtcg.core.model;
 
 import org.junit.Test;
 
+import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -18,8 +19,8 @@ public class CardLoaderTest {
 
     @Test
     public void should_load_card_with_given_number() throws Exception {
-        Card card = cardLoader.loadCard(1364);
+        Card card = cardLoader.loadCard(Gandalf.getCollection());
 
-        assertThat(card, equalTo(new Card(1364, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7)));
+        assertThat(card, equalTo(new Card(Gandalf.getCollection(), "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7)));
     }
 }

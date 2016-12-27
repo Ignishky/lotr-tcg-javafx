@@ -12,9 +12,11 @@ import org.testfx.service.finder.NodeFinder;
 
 import java.io.IOException;
 
+import static fr.ducloyer.lotrtcg.controller.CCard.HEIGHT;
+import static fr.ducloyer.lotrtcg.controller.CCard.WIDTH;
+import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
 import static fr.ducloyer.lotrtcg.utils.ImageMatchers.hasImage;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.hamcrest.number.IsCloseTo.closeTo;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
@@ -27,7 +29,7 @@ public class CCardTest extends ApplicationTest {
     public void start(Stage stage) throws IOException {
         loader.setLocation(getClass().getResource("/view/card.fxml"));
         Parent anchorPane = loader.load();
-        stage.setScene(new Scene(anchorPane, 109, 150));
+        stage.setScene(new Scene(anchorPane, WIDTH, HEIGHT));
         stage.show();
     }
 
@@ -36,20 +38,20 @@ public class CCardTest extends ApplicationTest {
         ImageView card = NODE_FINDER.lookup("#card").query();
 
         verifyThat(card, isVisible());
-        verifyThat(card.getFitWidth(), equalTo(109.0));
-        verifyThat(card.getFitHeight(), equalTo(150.0));
+        verifyThat(card.getFitWidth(), equalTo((double) WIDTH));
+        verifyThat(card.getFitHeight(), equalTo((double) HEIGHT));
         verifyThat(card.getImage(), hasImage("/card/Back_V.jpg"));
     }
 
     @Test
     public void should_load_card () {
-        loader.<CCard>getController().addCard(1364);
+        loader.<CCard>getController().addCard(Gandalf.getCollection());
 
         ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").query();
 
         verifyThat(card, isVisible());
-        verifyThat(card.getFitWidth(), closeTo(109.0, 0.1));
-        verifyThat(card.getFitHeight(), closeTo(150.0, 0.1));
+        verifyThat(card.getFitWidth(), equalTo((double) WIDTH));
+        verifyThat(card.getFitHeight(), equalTo((double) HEIGHT));
         verifyThat(card.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
     }
 }

@@ -31,7 +31,7 @@ public class Card {
     protected String picture;
     protected int strength;
 
-    public void copy(int number) {
+    protected void copy(int number) {
         Card card = LOADER.loadCard(number);
         collection = card.collection;
         name = card.name;

@@ -11,6 +11,9 @@ import java.util.ResourceBundle;
 
 public class CCard extends Card implements Initializable {
 
+    public static final int HEIGHT = 150;
+    public static final int WIDTH = 109;
+
     @FXML
     private ImageView card;
 

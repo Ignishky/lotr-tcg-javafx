@@ -9,12 +9,7 @@ import static org.testfx.matcher.base.GeneralMatchers.baseMatcher;
 public class ImageMatchers {
 
     public static Matcher<Image> hasImage(final String s) {
-        return baseMatcher("Images are different", new Predicate<Image>() {
-            @Override
-            public boolean apply(Image image) {
-                return imageAreEquals(image, new Image(s));
-            }
-        });
+        return baseMatcher("Images are different", (Predicate<Image>) image -> imageAreEquals(image, new Image(s)));
     }
 
     private static boolean imageAreEquals(Image image1, Image image2) {
