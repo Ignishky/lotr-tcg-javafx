@@ -14,6 +14,7 @@ import org.testfx.service.finder.NodeFinder;
 
 import java.io.IOException;
 
+import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
 import static org.hamcrest.Matchers.*;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.*;
@@ -28,10 +29,10 @@ public class CBoardTest extends ApplicationTest {
         loader.setLocation(getClass().getResource("/view/board.fxml"));
         Parent anchorPane = loader.load();
         CBoard cBoard = loader.getController();
-        cBoard.addCompanion(1290);
-        cBoard.addCompanion(1364);
-        cBoard.addMinion(1176);
-        cBoard.addMinion(1191);
+        cBoard.addCompanion(Frodo);
+        cBoard.addCompanion(Gandalf);
+        cBoard.addMinion(GoblinMarksman);
+        cBoard.addMinion(MoriaScaout);
         stage.setScene(new Scene(anchorPane, 250, 350));
         stage.show();
     }

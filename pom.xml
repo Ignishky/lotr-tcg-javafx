@@ -10,7 +10,7 @@
     </prerequisites>
 
     <modules>
-        <module>android</module>
+        <!-- <module>android</module> -->
         <module>core</module>
         <module>javafx</module>
     </modules>

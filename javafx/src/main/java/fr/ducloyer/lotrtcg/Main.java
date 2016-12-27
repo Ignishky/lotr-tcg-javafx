@@ -9,6 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
+import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
+
 @Slf4j
 public class Main extends Application {
 
@@ -24,10 +26,10 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/board.fxml"));
         AnchorPane anchorPane = loader.load();
         CBoard cBoard = loader.getController();
-        cBoard.addCompanion(1290);
-        cBoard.addCompanion(1364);
-        cBoard.addMinion(1176);
-        cBoard.addMinion(1191);
+        cBoard.addCompanion(Frodo);
+        cBoard.addCompanion(Gandalf);
+        cBoard.addMinion(GoblinMarksman);
+        cBoard.addMinion(MoriaScaout);
 
         primaryStage.setTitle("LOTR-TCG");
         primaryStage.getIcons().add(new Image("/images/ring-icon-32.png"));

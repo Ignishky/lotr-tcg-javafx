@@ -1,5 +1,6 @@
 package fr.ducloyer.lotrtcg.controller;
 
+import fr.ducloyer.lotrtcg.core.model.Card;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -47,15 +48,15 @@ public class CBoard implements Initializable {
         minions = newArrayList(minion1Controller, minion2Controller);
     }
 
-    public void addCompanion(int collection) {
-        log.info("Add companion {}", collection);
-        companions.get(nbCompanions).addPersonage(collection);
+    public void addCompanion(Card.Name card) {
+        log.info("Add companion {}", card.getCollection());
+        companions.get(nbCompanions).addPersonage(card.getCollection());
         nbCompanions++;
     }
 
-    public void addMinion(int collection) {
-        log.info("Add minion {}", collection);
-        minions.get(nbMinions).addPersonage(collection);
+    public void addMinion(Card.Name card) {
+        log.info("Add minion {}", card.getCollection());
+        minions.get(nbMinions).addPersonage(card.getCollection());
         nbMinions++;
     }
 
