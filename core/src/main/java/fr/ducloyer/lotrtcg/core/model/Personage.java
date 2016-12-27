@@ -8,6 +8,10 @@ public class Personage {
     private Card personage;
     protected int nbWound = 0;
 
+    public boolean isKilled() {
+        return nbWound == personage.getVitality();
+    }
+
     public String getName() {
         return personage.getName();
     }
@@ -22,5 +26,9 @@ public class Personage {
 
     public int getStrength() {
         return personage.getStrength();
+    }
+
+    public int getVitality() {
+        return personage.getVitality();
     }
 }

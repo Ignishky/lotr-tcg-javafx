@@ -3,6 +3,7 @@ package fr.ducloyer.lotrtcg.controller;
 import fr.ducloyer.lotrtcg.core.model.Personage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import lombok.extern.slf4j.Slf4j;
@@ -15,6 +16,9 @@ import static com.google.common.collect.Lists.newArrayList;
 
 @Slf4j
 public class CPersonage extends Personage implements Initializable {
+
+    @FXML
+    private Node root;
 
     @FXML
     private CCard personageController;
@@ -36,7 +40,6 @@ public class CPersonage extends Personage implements Initializable {
         woundTwo.setImage(new Image("/images/wound.png"));
         woundThree.setImage(new Image("/images/wound.png"));
         woundFour.setImage(new Image("/images/wound.png"));
-
         wounds = newArrayList(woundOne, woundTwo, woundThree, woundFour);
     }
 
@@ -50,7 +53,13 @@ public class CPersonage extends Personage implements Initializable {
         wounds.get(nbWound).setVisible(true);
         super.addWound();
 
-        log.info("{} has been wounded", getName());
-        Toastr.append(getName() + " has been wounded.");
+        if(nbWound < getVitality()) {
+            log.info("{} has been wounded", getName());
+            Toastr.append(getName() + " has been wounded.");
+        } else {
+            root.setVisible(false);
+            log.info("{} has been killed.", getName());
+            Toastr.append(getName() + " has been killed.");
+        }
     }
 }

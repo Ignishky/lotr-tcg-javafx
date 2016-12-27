@@ -30,6 +30,7 @@ public class Card {
     protected String name;
     protected String picture;
     protected int strength;
+    protected int vitality;
 
     protected void copy(int number) {
         Card card = LOADER.loadCard(number);
@@ -37,5 +38,6 @@ public class Card {
         name = card.name;
         picture = card.picture;
         strength = card.strength;
+        vitality = card.vitality;
     }
 }
