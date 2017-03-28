@@ -24,7 +24,7 @@ import static org.testfx.matcher.base.NodeMatchers.isVisible;
 public class CBoardTest extends ApplicationTest {
 
     private static final NodeFinder NODE_FINDER = new FxAssertContext().getNodeFinder();
-    private FXMLLoader loader = new FXMLLoader();
+    private final FXMLLoader loader = new FXMLLoader();
 
     private AnchorPane companion1;
     private AnchorPane companion2;

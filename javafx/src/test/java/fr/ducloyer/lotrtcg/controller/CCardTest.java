@@ -23,7 +23,7 @@ import static org.testfx.matcher.base.NodeMatchers.isVisible;
 public class CCardTest extends ApplicationTest {
 
     private static final NodeFinder NODE_FINDER = new FxAssertContext().getNodeFinder();
-    private FXMLLoader loader = new FXMLLoader();
+    private final FXMLLoader loader = new FXMLLoader();
 
     @Override
     public void start(Stage stage) throws IOException {

@@ -20,7 +20,7 @@ import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
 public class CPersonageTest extends ApplicationTest {
 
-    private FXMLLoader loader = new FXMLLoader();
+    private final FXMLLoader loader = new FXMLLoader();
 
     @Override
     public void start(Stage stage) throws IOException {
