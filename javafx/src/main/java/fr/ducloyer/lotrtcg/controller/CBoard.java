@@ -1,6 +1,7 @@
 package fr.ducloyer.lotrtcg.controller;
 
 import fr.ducloyer.lotrtcg.core.model.Card;
+import fr.ducloyer.lotrtcg.core.utils.EndGameException;
 import fr.ducloyer.lotrtcg.core.utils.FightResult;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -74,12 +75,16 @@ public class CBoard implements Initializable {
                 break;
             case KILL:
                 CPersonage personage = (CPersonage) fightResult.getPersonage();
-                if(FREE_PEOPLE == personage.getPersonage().getSide()) {
-                    companions.get(companions.indexOf(personage)).kill();
-                    nbCompanions--;
-                } else {
-                    minions.get(minions.indexOf(personage)).kill();
-                    nbMinions--;
+                try {
+                    if (FREE_PEOPLE == personage.getPersonage().getSide()) {
+                        companions.get(companions.indexOf(personage)).kill();
+                        nbCompanions--;
+                    } else {
+                        minions.get(minions.indexOf(personage)).kill();
+                        nbMinions--;
+                    }
+                } catch (EndGameException ege) {
+                    action.setDisable(true);
                 }
         }
 

@@ -129,6 +129,22 @@ public class CBoardTest extends ApplicationTest {
         verifyThat(fight.getText(), is("Next turn"));
     }
 
+    @Test
+    public void should_end_game_when_Frodo_dies() {
+        clickOn("#action"); // fight 1
+        clickOn("#action"); // fight 2
+        clickOn("#action"); // next turn
+        clickOn("#action"); // fight 1
+        clickOn("#action"); // fight 2
+        clickOn("#action"); // next turn
+        clickOn("#action"); // fight 1
+        clickOn("#action"); // next turn
+        clickOn("#action"); // fight 1
+
+        verifyThat(info.getText(), endsWith("Frodo has been killed. YOU LOOSE !!!!\n"));
+        verifyThat(fight.isDisabled(), is(true));
+    }
+
     private void verifyPersonageInit(AnchorPane personage) {
         verifyThat(personage.getChildren().get(0), is(instanceOf(AnchorPane.class)));
         verifyThat(personage.getChildren().get(1), isInvisible());

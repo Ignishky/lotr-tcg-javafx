@@ -1,6 +1,7 @@
 package fr.ducloyer.lotrtcg.controller;
 
 import fr.ducloyer.lotrtcg.core.model.Personage;
+import fr.ducloyer.lotrtcg.core.utils.EndGameException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -64,9 +65,14 @@ public class CPersonage extends Personage implements Initializable {
         Toastr.append(personageController.getName() + " has been wounded.");
     }
 
-    public void kill() {
+    public void kill() throws EndGameException {
         root.setVisible(false);
         log.info("{} has been killed", personageController.getName());
-        Toastr.append(personageController.getName() + " has been killed.");
+        if (personageController.getName().startsWith("Frodo")) {
+            Toastr.append(personageController.getName() + " has been killed. YOU LOOSE !!!!");
+            throw new EndGameException();
+        } else {
+            Toastr.append(personageController.getName() + " has been killed.");
+        }
     }
 }
