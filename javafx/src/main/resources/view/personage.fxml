@@ -5,8 +5,8 @@
 
 <AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ducloyer.lotrtcg.controller.CPersonage">
    <fx:include fx:id="personage" source="card.fxml" />
-   <ImageView fx:id="woundOne" layoutX="10.0" layoutY="20.0" visible="false" />
-   <ImageView fx:id="woundTwo" layoutX="40.0" layoutY="20.0" visible="false" />
-   <ImageView fx:id="woundThree" layoutX="70.0" layoutY="20.0" visible="false" />
-   <ImageView fx:id="woundFour" layoutX="10.0" layoutY="50.0" visible="false" />
+   <ImageView fx:id="woundOne" layoutX="10.0" layoutY="20.0" />
+   <ImageView fx:id="woundTwo" layoutX="40.0" layoutY="20.0" />
+   <ImageView fx:id="woundThree" layoutX="70.0" layoutY="20.0" />
+   <ImageView fx:id="woundFour" layoutX="10.0" layoutY="50.0" />
 </AnchorPane>

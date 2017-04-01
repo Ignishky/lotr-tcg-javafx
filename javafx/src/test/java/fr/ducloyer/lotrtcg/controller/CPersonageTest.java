@@ -41,7 +41,6 @@ public class CPersonageTest extends ApplicationTest {
         CPersonage controller = loader.getController();
         controller.addPersonage(Gandalf.getCollection());
 
-        verifyThat(controller.getName(), equalTo(controller.getPersonage().getName()));
         verifyThat(controller.getNbWound(), equalTo(0));
         verifyThat(controller.getPersonage(), equalTo(new Card(Gandalf.getCollection(), "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7, 4)));
         verifyThat("#woundOne", isInvisible());

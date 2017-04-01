@@ -8,12 +8,10 @@ public class Personage {
     private Card personage;
     protected int nbWound = 0;
 
-    public boolean isKilled() {
-        return nbWound == personage.getVitality();
-    }
-
-    public String getName() {
-        return personage.getName();
+    public Personage(Card.Name card) {
+        if(card != null) {
+            personage = CardLoader.getInstance().loadCard(card.getCollection());
+        }
     }
 
     public void addPersonage(Card personage) {

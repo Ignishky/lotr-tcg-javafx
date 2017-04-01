@@ -1,6 +1,7 @@
 package fr.ducloyer.lotrtcg.controller;
 
 import fr.ducloyer.lotrtcg.core.model.Card;
+import fr.ducloyer.lotrtcg.core.utils.FightResult;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static fr.ducloyer.lotrtcg.core.utils.FightResolver.fight;
 
 @Slf4j
 public class CBoard implements Initializable {
@@ -60,16 +62,27 @@ public class CBoard implements Initializable {
 
     @FXML
     public void startFight() {
+
         CPersonage companion = companions.get(fightPos);
         CPersonage minion = minions.get(fightPos);
 
-        if(companion.getStrength() > minion.getStrength()) {
-            minion.addWound();
-        } else {
-            companion.addWound();
+        FightResult fightResult = fight(companion, minion);
+        switch (fightResult.getAction()) {
+            case WOUND:
+                fightResult.getPersonage().addWound();
+                break;
+            case KILL:
+                CPersonage personage = (CPersonage) fightResult.getPersonage();
+                if(companions.contains(personage)) {
+                    companions.get(companions.indexOf(personage)).kill();
+                    nbCompanions--;
+                } else {
+                    minions.get(minions.indexOf(personage)).kill();
+                    nbMinions--;
+                }
         }
 
-        if(fightPos == companions.size()-1) {
+        if(++fightPos >= Math.min(nbCompanions, nbMinions)) {
             action.setText("Next turn");
             action.setOnAction( event -> {
                 Toastr.append("Start next turn");
@@ -77,8 +90,6 @@ public class CBoard implements Initializable {
                 action.setText("Fight");
                 action.setOnAction(event1 -> startFight());
             });
-        } else {
-            fightPos++;
         }
     }
 }

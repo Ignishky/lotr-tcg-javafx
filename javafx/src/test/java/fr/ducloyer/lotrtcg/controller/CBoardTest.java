@@ -116,6 +116,19 @@ public class CBoardTest extends ApplicationTest {
         verifyThat(info.getText(), endsWith("Moria Scout has been killed.\n"));
     }
 
+    @Test
+    public void should_not_fight_when_no_opponent() {
+        clickOn("#action"); // fight 1
+        clickOn("#action"); // fight 2
+        clickOn("#action"); // next turn
+        clickOn("#action"); // fight 1
+        clickOn("#action"); // fight 2
+        clickOn("#action"); // next turn
+        clickOn("#action"); // fight 1
+
+        verifyThat(fight.getText(), is("Next turn"));
+    }
+
     private void verifyPersonageInit(AnchorPane personage) {
         verifyThat(personage.getChildren().get(0), is(instanceOf(AnchorPane.class)));
         verifyThat(personage.getChildren().get(1), isInvisible());

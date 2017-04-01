@@ -34,32 +34,39 @@ public class CPersonage extends Personage implements Initializable {
 
     private List<ImageView> wounds;
 
+    public CPersonage() {
+        super(null);
+    }
+
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
         woundOne.setImage(new Image("/images/wound.png"));
+        woundOne.setVisible(false);
         woundTwo.setImage(new Image("/images/wound.png"));
+        woundTwo.setVisible(false);
         woundThree.setImage(new Image("/images/wound.png"));
+        woundThree.setVisible(false);
         woundFour.setImage(new Image("/images/wound.png"));
+        woundFour.setVisible(false);
         wounds = newArrayList(woundOne, woundTwo, woundThree, woundFour);
     }
 
     public void addPersonage(int collection) {
         super.addPersonage(personageController);
         personageController.addCard(collection);
-        Toastr.append("Play card " + getName() + ".");
+        Toastr.append("Play card " + personageController.getName() + ".");
     }
 
     public void addWound() {
         wounds.get(nbWound).setVisible(true);
         super.addWound();
+        log.info("{} has been wounded", personageController.getName());
+        Toastr.append(personageController.getName() + " has been wounded.");
+    }
 
-        if(nbWound < getVitality()) {
-            log.info("{} has been wounded", getName());
-            Toastr.append(getName() + " has been wounded.");
-        } else {
-            root.setVisible(false);
-            log.info("{} has been killed.", getName());
-            Toastr.append(getName() + " has been killed.");
-        }
+    public void kill() {
+        root.setVisible(false);
+        log.info("{} has been killed", personageController.getName());
+        Toastr.append(personageController.getName() + " has been killed.");
     }
 }
