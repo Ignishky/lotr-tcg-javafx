@@ -5,6 +5,7 @@
   },
   {
     "collection" : 1176,
+    "side" : "SHADOW",
     "name" : "Goblin Marksman",
     "picture" : "/card/Fellowship/LOTR-EN01176.jpg",
     "strength" : 7,
@@ -12,6 +13,7 @@
   },
   {
     "collection" : 1191,
+    "side" : "SHADOW",
     "name" : "Moria Scout",
     "picture" : "/card/Fellowship/LOTR-EN01191.jpg",
     "strength" : 6,
@@ -19,6 +21,7 @@
   },
   {
     "collection" : 1290,
+    "side" : "FREE_PEOPLE",
     "name" : "Frodo",
     "picture" : "/card/Fellowship/LOTR-EN01290.jpg",
     "strength" : 3,
@@ -26,6 +29,7 @@
   },
   {
     "collection" : 1364,
+    "side" : "FREE_PEOPLE",
     "name" : "Gandalf",
     "picture" : "/card/Fellowship/LOTR-EN01364.jpg",
     "strength" : 7,

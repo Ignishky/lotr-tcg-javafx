@@ -13,6 +13,7 @@ import java.io.IOException;
 import static fr.ducloyer.lotrtcg.controller.CCard.HEIGHT;
 import static fr.ducloyer.lotrtcg.controller.CCard.WIDTH;
 import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
+import static fr.ducloyer.lotrtcg.core.model.Card.Side.FREE_PEOPLE;
 import static org.hamcrest.Matchers.equalTo;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isInvisible;
@@ -42,7 +43,7 @@ public class CPersonageTest extends ApplicationTest {
         controller.addPersonage(Gandalf.getCollection());
 
         verifyThat(controller.getNbWound(), equalTo(0));
-        verifyThat(controller.getPersonage(), equalTo(new Card(Gandalf.getCollection(), "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7, 4)));
+        verifyThat(controller.getPersonage(), equalTo(new Card(Gandalf.getCollection(), FREE_PEOPLE, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7, 4)));
         verifyThat("#woundOne", isInvisible());
     }
 

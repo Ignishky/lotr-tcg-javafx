@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static fr.ducloyer.lotrtcg.core.model.Card.Side.FREE_PEOPLE;
 import static fr.ducloyer.lotrtcg.core.utils.FightResolver.fight;
 
 @Slf4j
@@ -73,7 +74,7 @@ public class CBoard implements Initializable {
                 break;
             case KILL:
                 CPersonage personage = (CPersonage) fightResult.getPersonage();
-                if(companions.contains(personage)) {
+                if(FREE_PEOPLE == personage.getPersonage().getSide()) {
                     companions.get(companions.indexOf(personage)).kill();
                     nbCompanions--;
                 } else {
