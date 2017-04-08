@@ -53,8 +53,15 @@ public class CPersonage extends Personage implements Initializable {
     }
 
     public void addPersonage(int collection) {
+        addPersonage(collection, 0);
+    }
+
+    public void addPersonage(int collection, int nbWounds) {
         super.addPersonage(personageController);
         personageController.addCard(collection);
+        for (int i=0; i<nbWounds; i++) {
+            addWound();
+        }
         Toastr.append("Play card " + personageController.getName() + ".");
     }
 

@@ -1,6 +1,6 @@
 package fr.ducloyer.lotrtcg.controller;
 
-import fr.ducloyer.lotrtcg.core.model.Card;
+import fr.ducloyer.lotrtcg.core.model.Card.Name;
 import fr.ducloyer.lotrtcg.core.utils.EndGameException;
 import fr.ducloyer.lotrtcg.core.utils.FightResult;
 import javafx.fxml.FXML;
@@ -50,15 +50,23 @@ public class CBoard implements Initializable {
         minions = newArrayList(minion1Controller, minion2Controller);
     }
 
-    public void addCompanion(Card.Name card) {
+    public void addCompanion(Name card) {
+        addCompanion(card, 0);
+    }
+
+    public void addCompanion(Name card, int nbWounds) {
         log.info("Add companion {}", card.getCollection());
-        companions.get(nbCompanions).addPersonage(card.getCollection());
+        companions.get(nbCompanions).addPersonage(card.getCollection(), nbWounds);
         nbCompanions++;
     }
 
-    public void addMinion(Card.Name card) {
+    public void addMinion(Name card) {
+        addMinion(card, 0);
+    }
+
+    public void addMinion(Name card, int nbWounds) {
         log.info("Add minion {}", card.getCollection());
-        minions.get(nbMinions).addPersonage(card.getCollection());
+        minions.get(nbMinions).addPersonage(card.getCollection(), nbWounds);
         nbMinions++;
     }
 
@@ -77,11 +85,11 @@ public class CBoard implements Initializable {
                 CPersonage personage = (CPersonage) fightResult.getPersonage();
                 try {
                     if (FREE_PEOPLE == personage.getPersonage().getSide()) {
-                        companions.get(companions.indexOf(personage)).kill();
                         nbCompanions--;
+                        companions.get(companions.indexOf(personage)).kill();
                     } else {
-                        minions.get(minions.indexOf(personage)).kill();
                         nbMinions--;
+                        minions.get(minions.indexOf(personage)).kill();
                     }
                 } catch (EndGameException ege) {
                     action.setDisable(true);
