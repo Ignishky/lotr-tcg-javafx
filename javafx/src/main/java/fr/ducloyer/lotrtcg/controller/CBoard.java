@@ -5,6 +5,7 @@ import fr.ducloyer.lotrtcg.core.utils.EndGameException;
 import fr.ducloyer.lotrtcg.core.utils.FightResult;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import lombok.extern.slf4j.Slf4j;
@@ -21,20 +22,30 @@ import static fr.ducloyer.lotrtcg.core.utils.FightResolver.fight;
 public class CBoard implements Initializable {
 
     @FXML
+    private Parent companion1;
+    @FXML
     private CPersonage companion1Controller;
+    @FXML
+    private Parent companion2;
     @FXML
     private CPersonage companion2Controller;
 
-    private List<CPersonage> companions;
     private int nbCompanions = 0;
+    private List<Parent> companionsViews;
+    private List<CPersonage> companionsControllers;
 
+    @FXML
+    private Parent minion1;
     @FXML
     private CPersonage minion1Controller;
     @FXML
+    private Parent minion2;
+    @FXML
     private CPersonage minion2Controller;
 
-    private List<CPersonage> minions;
     private int nbMinions = 0;
+    private List<Parent> minions;
+    private List<CPersonage> minionsControllers;
 
     @FXML
     private Button action;
@@ -46,8 +57,10 @@ public class CBoard implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Toastr.init(info);
-        companions = newArrayList(companion1Controller, companion2Controller);
-        minions = newArrayList(minion1Controller, minion2Controller);
+        companionsViews = newArrayList(companion1, companion2);
+        companionsControllers = newArrayList(companion1Controller, companion2Controller);
+        minions = newArrayList(minion1, minion2);
+        minionsControllers = newArrayList(minion1Controller, minion2Controller);
     }
 
     public void addCompanion(Name card) {
@@ -56,7 +69,8 @@ public class CBoard implements Initializable {
 
     public void addCompanion(Name card, int nbWounds) {
         log.info("Add companion {}", card.getCollection());
-        companions.get(nbCompanions).addPersonage(card.getCollection(), nbWounds);
+        companionsControllers.get(nbCompanions).addPersonage(card.getCollection(), nbWounds);
+        companionsViews.get(nbCompanions).setVisible(true);
         nbCompanions++;
     }
 
@@ -66,15 +80,16 @@ public class CBoard implements Initializable {
 
     public void addMinion(Name card, int nbWounds) {
         log.info("Add minion {}", card.getCollection());
-        minions.get(nbMinions).addPersonage(card.getCollection(), nbWounds);
+        minionsControllers.get(nbMinions).addPersonage(card.getCollection(), nbWounds);
+        minions.get(nbMinions).setVisible(true);
         nbMinions++;
     }
 
     @FXML
     public void startFight() {
 
-        CPersonage companion = companions.get(fightPos);
-        CPersonage minion = minions.get(fightPos);
+        CPersonage companion = companionsControllers.get(fightPos);
+        CPersonage minion = minionsControllers.get(fightPos);
 
         FightResult fightResult = fight(companion, minion);
         switch (fightResult.getAction()) {
@@ -86,10 +101,10 @@ public class CBoard implements Initializable {
                 try {
                     if (FREE_PEOPLE == personage.getPersonage().getSide()) {
                         nbCompanions--;
-                        companions.get(companions.indexOf(personage)).kill();
+                        companionsControllers.get(companionsControllers.indexOf(personage)).kill();
                     } else {
                         nbMinions--;
-                        minions.get(minions.indexOf(personage)).kill();
+                        minionsControllers.get(minionsControllers.indexOf(personage)).kill();
                     }
                 } catch (EndGameException ege) {
                     action.setDisable(true);

@@ -5,10 +5,10 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="fr.ducloyer.lotrtcg.controller.CBoard">
-    <fx:include fx:id="companion1" layoutX="15.0" layoutY="165.0" source="personage.fxml"/>
-    <fx:include fx:id="companion2" layoutX="125.0" layoutY="165.0" source="personage.fxml"/>
-    <fx:include fx:id="minion1" layoutX="15.0" layoutY="15.0" source="personage.fxml"/>
-    <fx:include fx:id="minion2" layoutX="125.0" layoutY="15.0" source="personage.fxml"/>
+    <fx:include fx:id="companion1" layoutX="15.0" layoutY="165.0" source="personage.fxml" visible="false"/>
+    <fx:include fx:id="companion2" layoutX="125.0" layoutY="165.0" source="personage.fxml" visible="false"/>
+    <fx:include fx:id="minion1" layoutX="15.0" layoutY="15.0" source="personage.fxml" visible="false"/>
+    <fx:include fx:id="minion2" layoutX="125.0" layoutY="15.0" source="personage.fxml" visible="false"/>
     <Button fx:id="action" layoutX="100.0" layoutY="328.0" mnemonicParsing="false" onAction="#startFight" text="Fight"/>
     <TextArea fx:id="info" layoutY="363.0" prefHeight="88.0" prefWidth="250.0"/>
 </AnchorPane>

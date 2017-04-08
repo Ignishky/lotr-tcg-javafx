@@ -53,18 +53,18 @@ public class CBoardTest extends ApplicationTest {
     @Test
     public void should_load_board() {
 
-        initPersonages(Frodo, 0, Gandalf, 0, GoblinMarksman, 0, MoriaScout,0);
+        initPersonages(Frodo, 0, null, 0, GoblinMarksman, 0, null,0);
 
         verifyPersonage(companion1, false, false, false, false);
-        verifyPersonage(companion2, false, false, false, false);
+        verifyThat(companion2, isInvisible());
         verifyPersonage(minion1, false, false, false, false);
-        verifyPersonage(minion2, false, false, false, false);
+        verifyThat(minion2, isInvisible());
 
         verifyThat(fight, isVisible());
         verifyThat(fight.getLayoutX(), equalTo(100.0));
         verifyThat(fight.getLayoutY(), equalTo(328.0));
 
-        verifyThat(info.getText(), equalTo("Play card Frodo.\nPlay card Gandalf.\nPlay card Goblin Marksman.\nPlay card Moria Scout.\n"));
+        verifyThat(info.getText(), equalTo("Play card Frodo.\nPlay card Goblin Marksman.\n"));
     }
 
     @Test
@@ -157,6 +157,7 @@ public class CBoardTest extends ApplicationTest {
     }
 
     private void verifyPersonage(AnchorPane personage, boolean has1Wound, boolean has2Wounds, boolean has3Wounds, boolean has4Wounds) {
+        verifyThat(personage, isVisible());
         verifyThat(personage.getChildren().get(0), is(instanceOf(AnchorPane.class)));
         verifyThat(personage.getChildren().get(1), has1Wound ? isVisible() : isInvisible());
         verifyThat(personage.getChildren().get(2), has2Wounds ? isVisible() : isInvisible());
