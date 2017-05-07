@@ -7,7 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.api.FxAssertContext;
-import org.testfx.framework.junit.ApplicationTest;
 import org.testfx.service.finder.NodeFinder;
 
 import java.io.IOException;
@@ -20,7 +19,7 @@ import static org.hamcrest.core.IsEqual.equalTo;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
-public class CCardTest extends ApplicationTest {
+public class CCardTest extends AbstractControllerTest {
 
     private static final NodeFinder NODE_FINDER = new FxAssertContext().getNodeFinder();
     private final FXMLLoader loader = new FXMLLoader();

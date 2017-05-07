@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.Test;
-import org.testfx.framework.junit.ApplicationTest;
 
 import java.io.IOException;
 
@@ -19,7 +18,7 @@ import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isInvisible;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
-public class CPersonageTest extends ApplicationTest {
+public class CPersonageTest extends AbstractControllerTest {
 
     private final FXMLLoader loader = new FXMLLoader();
 
