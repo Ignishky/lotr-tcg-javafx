@@ -109,11 +109,14 @@ public class CBoard implements Initializable {
                 } catch (EndGameException ege) {
                     action.setDisable(true);
                 }
+                break;
+            default:
+                throw new IllegalStateException("Unexpected fight result action " + fightResult.getAction());
         }
 
-        if(++fightPos >= Math.min(nbCompanions, nbMinions)) {
+        if (++fightPos >= Math.min(nbCompanions, nbMinions)) {
             action.setText("Next turn");
-            action.setOnAction( event -> {
+            action.setOnAction(event -> {
                 Toastr.append("Start next turn");
                 fightPos = 0;
                 action.setText("Fight");

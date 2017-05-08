@@ -9,7 +9,7 @@ public class Personage {
     protected int nbWound = 0;
 
     public Personage(Card.Name card) {
-        if(card != null) {
+        if (card != null) {
             personage = CardLoader.getInstance().loadCard(card.getCollection());
         }
     }

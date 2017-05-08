@@ -2,6 +2,7 @@ package fr.ducloyer.lotrtcg.core.model;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 public class CardLoader {
 
     private static final Gson GSON = new Gson();
@@ -42,7 +44,8 @@ public class CardLoader {
         if (reader != null) {
             try {
                 reader.close();
-            } catch (IOException e) {
+            } catch (IOException ioe) {
+                log.error("Unable to close reader", ioe);
             }
         }
     }
