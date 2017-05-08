@@ -19,15 +19,15 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Application javaFx - Checkstyle report</title>
+    <title>Application JavaFx - Checkstyle report</title>
     <link>https://github.com/Ignishky/lotr-tcg/lotr-tcg-javafx</link>
-    <description>Application javaFx - Checkstyle report</description>
+    <description>Application JavaFx - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
       <title>File: 5,
              Errors: 0,
-             Warnings: 187,
+             Warnings: 24,
              Infos: 0
       </title>
             <link>https://github.com/Ignishky/lotr-tcg/lotr-tcg-javafx/checkstyle.html</link>
@@ -52,7 +52,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  56
+                  8
                 </td>
                 <td>
                   0
@@ -66,7 +66,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  11
+                  1
                 </td>
                 <td>
                   0
@@ -80,7 +80,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  10
+                  2
                 </td>
                 <td>
                   0
@@ -94,7 +94,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  25
+                  4
                 </td>
                 <td>
                   0
@@ -108,7 +108,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  85
+                  9
                 </td>
                 <td>
                   0
