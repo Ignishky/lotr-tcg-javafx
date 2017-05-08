@@ -80,6 +80,13 @@
         <system>Github Issues</system>
     </issueManagement>
 
+    <distributionManagement>
+        <site>
+            <id>Lotr-tcg site</id>
+            <url>ssh://git@github.com/Ignishky/lotr-tcg.git</url>
+        </site>
+    </distributionManagement>
+
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -205,7 +212,6 @@
                     <checkoutDirectory>${scmPublish.checkoutDirectory}</checkoutDirectory>
                     <checkinComment>Publishing Site Docs for ${project.artifactId}:${project.version}</checkinComment>
                     <!-- Plugins defaults to "target/staging" and since the distributionManagement section is a pain in the ass for site docs, this is easier -->
-                    <content>${project.reporting.outputDirectory}</content>
                     <skipDeletedFiles>true</skipDeletedFiles>
                     <pubScmUrl>scm:git:ssh://git@github.com/Ignishky/lotr-tcg.git</pubScmUrl>
                     <scmBranch>gh-pages</scmBranch>
