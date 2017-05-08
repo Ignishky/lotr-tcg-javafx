@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>lotr-tcg-javafx</artifactId>
-    <name>Application javaFx</name>
+    <name>Application JavaFx</name>
     <description>This module contains a JavaFx implementation of the GUI.</description>
 
     <properties>
