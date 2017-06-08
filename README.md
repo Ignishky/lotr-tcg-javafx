@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Ignishky/lotr-tcg.svg?branch=master)](https://travis-ci.org/Ignishky/lotr-tcg)
+
 # lotr_tcg
 
 This project is a video game from the Lord Of The Rings Trading Card Game.
