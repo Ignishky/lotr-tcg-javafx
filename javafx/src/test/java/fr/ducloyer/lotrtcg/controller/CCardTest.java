@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.api.FxAssertContext;
@@ -52,5 +53,15 @@ public class CCardTest extends AbstractControllerTest {
         verifyThat(card.getFitWidth(), equalTo((double) WIDTH));
         verifyThat(card.getFitHeight(), equalTo((double) HEIGHT));
         verifyThat(card.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
+    }
+
+    @Test
+    public void should_zoom_on_card_with_right_click() {
+        loader.<CCard>getController().addCard(Gandalf.getCollection());
+        ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").query();
+
+        clickOn(card, MouseButton.SECONDARY);
+
+        clickOn("OK", MouseButton.PRIMARY);
     }
 }
