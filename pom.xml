@@ -10,7 +10,7 @@
 
     <groupId>fr.ducloyer</groupId>
     <artifactId>lotr-tcg</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>0.1.0-SNAPSHOT</version>
     <name>Lord of the Rings - Trading Card Game</name>
     <description>This project is a video game from the Lord Of The Rings Trading Card Game.</description>
 
