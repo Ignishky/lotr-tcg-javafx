@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/Ignishky/lotr-tcg.svg?branch=master)](https://travis-ci.org/Ignishky/lotr-tcg)
+[![Coverage Status](https://coveralls.io/repos/github/Ignishky/lotr-tcg/badge.svg)](https://coveralls.io/github/Ignishky/lotr-tcg)
 
 # lotr_tcg
 
