@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="392.0" prefWidth="277.0" style="-fx-background-color: red;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ducloyer.lotrtcg.controller.CCard">
+   <ImageView fx:id="zoom" fitHeight="497.0" fitWidth="357.0" onMouseClicked="#showBigDisplay" pickOnBounds="true" preserveRatio="true" />
+</AnchorPane>

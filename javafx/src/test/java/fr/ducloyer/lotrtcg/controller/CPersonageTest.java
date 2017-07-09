@@ -9,8 +9,8 @@ import org.junit.Test;
 
 import java.io.IOException;
 
-import static fr.ducloyer.lotrtcg.controller.CCard.HEIGHT;
-import static fr.ducloyer.lotrtcg.controller.CCard.WIDTH;
+import static fr.ducloyer.lotrtcg.controller.CCard.MIN_HEIGHT;
+import static fr.ducloyer.lotrtcg.controller.CCard.MIN_WIDTH;
 import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
 import static fr.ducloyer.lotrtcg.core.model.Card.Side.FREE_PEOPLE;
 import static org.hamcrest.Matchers.equalTo;
@@ -26,7 +26,7 @@ public class CPersonageTest extends AbstractControllerTest {
     public void start(Stage stage) throws IOException {
         loader.setLocation(getClass().getResource("/view/personage.fxml"));
         Parent anchorPane = loader.load();
-        stage.setScene(new Scene(anchorPane, WIDTH, HEIGHT));
+        stage.setScene(new Scene(anchorPane, MIN_WIDTH, MIN_HEIGHT));
         stage.show();
     }
 
