@@ -37,7 +37,7 @@ public class Card {
     protected int strength;
     protected int vitality;
 
-    protected void copy(int number) {
+    protected void load(int number) {
         Card card = LOADER.loadCard(number);
         collection = card.collection;
         side = card.side;

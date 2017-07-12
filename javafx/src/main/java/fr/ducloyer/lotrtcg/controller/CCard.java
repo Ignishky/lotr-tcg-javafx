@@ -37,7 +37,7 @@ public class CCard extends Card implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {}
 
     public void addCard(int number) {
-        super.copy(number);
+        super.load(number);
         card.setImage(new Image(picture));
     }
 
