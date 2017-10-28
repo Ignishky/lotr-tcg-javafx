@@ -1,5 +1,6 @@
 package fr.ducloyer.lotrtcg;
 
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.api.FxToolkit;
@@ -22,6 +23,6 @@ public class MainTest extends ApplicationTest {
         Stage registeredStage = FxToolkit.toolkitContext().getRegisteredStage();
         verifyThat(registeredStage.getTitle(), equalTo("LOTR-TCG"));
         verifyThat(registeredStage.getIcons(), hasSize(1));
-        verifyThat(registeredStage.getIcons().get(0), hasImage("/images/ring-icon-32.png"));
+        verifyThat((LocatedImage) registeredStage.getIcons().get(0), hasImage("/images/ring-icon-32.png"));
     }
 }

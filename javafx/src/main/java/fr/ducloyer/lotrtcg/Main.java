@@ -2,10 +2,10 @@ package fr.ducloyer.lotrtcg;
 
 import fr.ducloyer.lotrtcg.controller.CBoard;
 import fr.ducloyer.lotrtcg.controller.CCard;
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
@@ -70,7 +70,7 @@ public class Main extends Application {
 
     private void prepareStage(Stage primaryStage, AnchorPane anchorPane) {
         primaryStage.setTitle("LOTR-TCG");
-        primaryStage.getIcons().add(new Image("/images/ring-icon-32.png"));
+        primaryStage.getIcons().add(new LocatedImage("/images/ring-icon-32.png"));
         primaryStage.setScene(new Scene(anchorPane));
         primaryStage.show();
     }

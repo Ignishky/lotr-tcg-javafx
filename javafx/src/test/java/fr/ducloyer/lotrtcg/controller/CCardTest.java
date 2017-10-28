@@ -1,5 +1,6 @@
 package fr.ducloyer.lotrtcg.controller;
 
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -41,7 +42,7 @@ public class CCardTest extends AbstractControllerTest {
         verifyThat(card, isVisible());
         verifyThat(card.getFitWidth(), equalTo(MIN_WIDTH));
         verifyThat(card.getFitHeight(), equalTo(MIN_HEIGHT));
-        verifyThat(card.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
+        verifyThat((LocatedImage) card.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
     }
 
     @Test
@@ -54,7 +55,7 @@ public class CCardTest extends AbstractControllerTest {
         verifyThat(zoom, isVisible());
         verifyThat(zoom.getFitWidth(), equalTo(WIDTH));
         verifyThat(zoom.getFitHeight(), equalTo(HEIGHT));
-        verifyThat(zoom.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
+        verifyThat((LocatedImage) zoom.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
         clickOn(zoom, SECONDARY);
 
         verifyThat(zoom.getScene().getWindow().isShowing(), equalTo(false));
