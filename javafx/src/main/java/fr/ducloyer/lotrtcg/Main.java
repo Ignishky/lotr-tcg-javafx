@@ -1,7 +1,6 @@
 package fr.ducloyer.lotrtcg;
 
 import fr.ducloyer.lotrtcg.controller.CBoard;
-import fr.ducloyer.lotrtcg.controller.CCard;
 import fr.ducloyer.lotrtcg.scene.LocatedImage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,45 +16,18 @@ import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
 @Slf4j
 public class Main extends Application {
 
-    private static String mode = "all";
-
     public static void main(String[] args) {
-        mode = args != null && args.length > 0 ? args[0] : "all";
-
-        log.info("Start a new game in mode '{}'.", mode);
-
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        log.info("Start a new game.");
 
-        AnchorPane anchorPane;
-        switch (mode) {
-            case "card":
-                anchorPane = testCard();
-                break;
-            case "board":
-                anchorPane = testBoard();
-                break;
-            default:
-                anchorPane = testBoard();
-        }
-
-        prepareStage(primaryStage, anchorPane);
+        prepareStage(primaryStage);
     }
 
-    private AnchorPane testCard() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/card.fxml"));
-        AnchorPane anchorPane = loader.load();
-        CCard card = loader.getController();
-
-        card.addCard(Frodo.getCollection());
-
-        return anchorPane;
-    }
-
-    private AnchorPane testBoard() throws IOException {
+    private AnchorPane loadBoard() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/board.fxml"));
         AnchorPane anchorPane = loader.load();
         CBoard board = loader.getController();
@@ -68,10 +40,11 @@ public class Main extends Application {
         return anchorPane;
     }
 
-    private void prepareStage(Stage primaryStage, AnchorPane anchorPane) {
+    private void prepareStage(Stage primaryStage) throws IOException {
+
         primaryStage.setTitle("LOTR-TCG");
         primaryStage.getIcons().add(new LocatedImage("/images/ring-icon-32.png"));
-        primaryStage.setScene(new Scene(anchorPane));
+        primaryStage.setScene(new Scene(loadBoard()));
         primaryStage.show();
     }
 }
