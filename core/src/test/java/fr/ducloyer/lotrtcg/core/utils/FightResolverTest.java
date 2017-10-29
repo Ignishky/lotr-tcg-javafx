@@ -7,8 +7,8 @@ import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
 import static fr.ducloyer.lotrtcg.core.utils.FightResolver.fight;
 import static fr.ducloyer.lotrtcg.core.utils.FightResult.Actions.KILL;
 import static fr.ducloyer.lotrtcg.core.utils.FightResult.Actions.WOUND;
+import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 
 public class FightResolverTest {
 
@@ -19,7 +19,7 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, equalTo(new FightResult(WOUND, companion)));
+        assertThat(fightResult, is(new FightResult(WOUND, companion)));
     }
 
     @Test
@@ -29,7 +29,7 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, equalTo(new FightResult(WOUND, companion)));
+        assertThat(fightResult, is(new FightResult(WOUND, companion)));
     }
 
     @Test
@@ -39,7 +39,7 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, equalTo(new FightResult(WOUND, minion)));
+        assertThat(fightResult, is(new FightResult(WOUND, minion)));
     }
 
     @Test
@@ -50,6 +50,6 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, equalTo(new FightResult(KILL, minion)));
+        assertThat(fightResult, is(new FightResult(KILL, minion)));
     }
 }

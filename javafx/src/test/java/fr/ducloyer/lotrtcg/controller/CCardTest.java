@@ -16,7 +16,7 @@ import static fr.ducloyer.lotrtcg.controller.CCard.*;
 import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
 import static fr.ducloyer.lotrtcg.utils.ImageMatchers.hasImage;
 import static javafx.scene.input.MouseButton.SECONDARY;
-import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.Matchers.is;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
@@ -40,8 +40,8 @@ public class CCardTest extends AbstractControllerTest {
         ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").query();
 
         verifyThat(card, isVisible());
-        verifyThat(card.getFitWidth(), equalTo(MIN_WIDTH));
-        verifyThat(card.getFitHeight(), equalTo(MIN_HEIGHT));
+        verifyThat(card.getFitWidth(), is(MIN_WIDTH));
+        verifyThat(card.getFitHeight(), is(MIN_HEIGHT));
         verifyThat((LocatedImage) card.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
     }
 
@@ -53,11 +53,11 @@ public class CCardTest extends AbstractControllerTest {
 
         ImageView zoom = NODE_FINDER.lookup("#zoom").query();
         verifyThat(zoom, isVisible());
-        verifyThat(zoom.getFitWidth(), equalTo(WIDTH));
-        verifyThat(zoom.getFitHeight(), equalTo(HEIGHT));
+        verifyThat(zoom.getFitWidth(), is(WIDTH));
+        verifyThat(zoom.getFitHeight(), is(HEIGHT));
         verifyThat((LocatedImage) zoom.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
         clickOn(zoom, SECONDARY);
 
-        verifyThat(zoom.getScene().getWindow().isShowing(), equalTo(false));
+        verifyThat(zoom.getScene().getWindow().isShowing(), is(false));
     }
 }

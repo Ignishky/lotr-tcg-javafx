@@ -140,8 +140,14 @@
             </dependency>
             <dependency>
                 <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-all</artifactId>
+                <artifactId>hamcrest-library</artifactId>
                 <version>${hamcrest-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.testfx</groupId>
+                <artifactId>openjfx-monocle</artifactId>
+                <version>8u76-b04</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

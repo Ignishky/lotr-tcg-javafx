@@ -60,10 +60,10 @@ public class CBoardTest extends AbstractControllerTest {
         verifyThat(minion2, isInvisible());
 
         verifyThat(fight, isVisible());
-        verifyThat(fight.getLayoutX(), equalTo(100.0));
-        verifyThat(fight.getLayoutY(), equalTo(328.0));
+        verifyThat(fight.getLayoutX(), is(100.0));
+        verifyThat(fight.getLayoutY(), is(328.0));
 
-        verifyThat(info.getText(), equalTo("Play card Frodo.\nPlay card Goblin Marksman.\n"));
+        verifyThat(info.getText(), is("Play card Frodo.\nPlay card Goblin Marksman.\n"));
     }
 
     @Test
@@ -157,7 +157,7 @@ public class CBoardTest extends AbstractControllerTest {
 
     private void verifyPersonage(AnchorPane personage, boolean has1Wound, boolean has2Wounds, boolean has3Wounds, boolean has4Wounds) {
         verifyThat(personage, isVisible());
-        verifyThat(personage.getChildren().get(0), is(instanceOf(AnchorPane.class)));
+        verifyThat(personage.getChildren().get(0), instanceOf(AnchorPane.class));
         verifyThat(personage.getChildren().get(1), has1Wound ? isVisible() : isInvisible());
         verifyThat(personage.getChildren().get(2), has2Wounds ? isVisible() : isInvisible());
         verifyThat(personage.getChildren().get(3), has3Wounds ? isVisible() : isInvisible());
