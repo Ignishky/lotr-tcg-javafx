@@ -47,11 +47,13 @@ public class CCard extends Card implements Initializable {
             Stage stage;
             if (zoom == null || !zoom.isVisible()) {
                 log.info("Zoom on {}", name);
-                stage = new Stage();
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/zoom.fxml"));
                 AnchorPane anchorPane = loader.load();
                 ImageView zoom = (ImageView) anchorPane.getChildren().get(0);
                 zoom.setImage(new LocatedImage(picture));
+                stage = new Stage();
+                stage.setTitle("Zoom on " + name);
+                stage.getIcons().add(new LocatedImage("/images/ring-icon-32.png"));
                 stage.setScene(new Scene(anchorPane));
                 stage.initModality(APPLICATION_MODAL);
                 stage.initOwner(card.getScene().getWindow());

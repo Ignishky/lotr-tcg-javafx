@@ -49,6 +49,7 @@ public class CCardTest extends AbstractControllerTest {
     public void should_zoom_on_card_with_right_click() {
         loader.<CCard>getController().addCard(Gandalf.getCollection());
         ImageView card = NODE_FINDER.lookup("#card").query();
+
         clickOn(card, SECONDARY);
 
         ImageView zoom = NODE_FINDER.lookup("#zoom").query();
@@ -56,8 +57,14 @@ public class CCardTest extends AbstractControllerTest {
         verifyThat(zoom.getFitWidth(), is(WIDTH));
         verifyThat(zoom.getFitHeight(), is(HEIGHT));
         verifyThat((LocatedImage) zoom.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
+
+        Stage stage = (Stage) zoom.getScene().getWindow();
+        verifyThat(stage.isShowing(), is(true));
+        verifyThat(stage.getTitle(), is("Zoom on Gandalf"));
+        verifyThat((LocatedImage) stage.getIcons().get(0), hasImage("/images/ring-icon-32.png"));
+
         clickOn(zoom, SECONDARY);
 
-        verifyThat(zoom.getScene().getWindow().isShowing(), is(false));
+        verifyThat(stage.isShowing(), is(false));
     }
 }
