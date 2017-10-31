@@ -69,7 +69,7 @@ public class CBoard implements Initializable {
 
     public void addCompanion(Name card, int nbWounds) {
         log.info("Add companion {}", card.getCollection());
-        companionsControllers.get(nbCompanions).addPersonage(card.getCollection(), nbWounds);
+        companionsControllers.get(nbCompanions).addPersonage(card, nbWounds);
         companionsViews.get(nbCompanions).setVisible(true);
         nbCompanions++;
     }
@@ -80,7 +80,7 @@ public class CBoard implements Initializable {
 
     public void addMinion(Name card, int nbWounds) {
         log.info("Add minion {}", card.getCollection());
-        minionsControllers.get(nbMinions).addPersonage(card.getCollection(), nbWounds);
+        minionsControllers.get(nbMinions).addPersonage(card, nbWounds);
         minions.get(nbMinions).setVisible(true);
         nbMinions++;
     }

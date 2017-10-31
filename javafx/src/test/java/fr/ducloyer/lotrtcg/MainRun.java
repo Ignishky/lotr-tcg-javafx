@@ -50,7 +50,7 @@ public class MainRun extends Application {
         AnchorPane anchorPane = loader.load();
         CCard card = loader.getController();
 
-        card.addCard(Frodo.getCollection());
+        card.addCard(Frodo);
 
         return anchorPane;
     }

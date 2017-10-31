@@ -39,7 +39,7 @@ public class CPersonageTest extends AbstractControllerTest {
     public void should_init_personage() {
 
         CPersonage controller = loader.getController();
-        controller.addPersonage(Gandalf.getCollection());
+        controller.addPersonage(Gandalf);
 
         verifyThat(controller.getNbWound(), is(0));
         verifyThat(controller.getPersonage(), is(new Card(Gandalf.getCollection(), FREE_PEOPLE, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7, 4)));
@@ -49,7 +49,7 @@ public class CPersonageTest extends AbstractControllerTest {
     @Test
     public void should_add_wound() {
         CPersonage controller = loader.getController();
-        controller.addPersonage(Gandalf.getCollection());
+        controller.addPersonage(Gandalf);
         controller.addWound();
         controller.addWound();
         controller.addWound();

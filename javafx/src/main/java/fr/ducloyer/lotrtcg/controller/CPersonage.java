@@ -1,5 +1,6 @@
 package fr.ducloyer.lotrtcg.controller;
 
+import fr.ducloyer.lotrtcg.core.model.Card.Name;
 import fr.ducloyer.lotrtcg.core.model.Personage;
 import fr.ducloyer.lotrtcg.core.utils.EndGameException;
 import javafx.fxml.FXML;
@@ -52,13 +53,13 @@ public class CPersonage extends Personage implements Initializable {
         wounds = newArrayList(woundOne, woundTwo, woundThree, woundFour);
     }
 
-    public void addPersonage(int collection) {
-        addPersonage(collection, 0);
+    public void addPersonage(Name name) {
+        addPersonage(name, 0);
     }
 
-    public void addPersonage(int collection, int nbWounds) {
+    public void addPersonage(Name name, int nbWounds) {
         super.addPersonage(personageController);
-        personageController.addCard(collection);
+        personageController.addCard(name);
         for (int i = 0; i < nbWounds; i++) {
             addWound();
         }

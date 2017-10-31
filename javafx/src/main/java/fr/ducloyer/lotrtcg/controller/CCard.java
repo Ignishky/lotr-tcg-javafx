@@ -36,8 +36,8 @@ public class CCard extends Card implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle rb) {}
 
-    public void addCard(int number) {
-        super.load(number);
+    public void addCard(Name name) {
+        super.load(name.getCollection());
         card.setImage(new LocatedImage(picture));
     }
 

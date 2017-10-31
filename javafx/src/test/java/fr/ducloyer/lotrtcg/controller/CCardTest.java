@@ -35,7 +35,7 @@ public class CCardTest extends AbstractControllerTest {
 
     @Test
     public void should_load_card () {
-        loader.<CCard>getController().addCard(Gandalf.getCollection());
+        loader.<CCard>getController().addCard(Gandalf);
 
         ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").query();
 
@@ -47,7 +47,7 @@ public class CCardTest extends AbstractControllerTest {
 
     @Test
     public void should_zoom_on_card_with_right_click() {
-        loader.<CCard>getController().addCard(Gandalf.getCollection());
+        loader.<CCard>getController().addCard(Gandalf);
         ImageView card = NODE_FINDER.lookup("#card").query();
 
         clickOn(card, SECONDARY);
