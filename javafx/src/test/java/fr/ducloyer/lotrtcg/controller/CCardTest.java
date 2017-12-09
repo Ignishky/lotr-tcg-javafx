@@ -2,9 +2,9 @@ package fr.ducloyer.lotrtcg.controller;
 
 import fr.ducloyer.lotrtcg.scene.LocatedImage;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.api.FxAssertContext;
@@ -28,8 +28,8 @@ public class CCardTest extends AbstractControllerTest {
     @Override
     public void start(Stage stage) throws IOException {
         loader.setLocation(getClass().getResource("/view/card.fxml"));
-        Parent anchorPane = loader.load();
-        stage.setScene(new Scene(anchorPane, MIN_WIDTH, MIN_HEIGHT));
+        ImageView imageView = loader.load();
+        stage.setScene(new Scene(new VBox(imageView), MIN_WIDTH, MIN_HEIGHT));
         stage.show();
     }
 

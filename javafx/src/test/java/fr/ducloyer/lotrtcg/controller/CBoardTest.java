@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.junit.Test;
@@ -157,7 +158,7 @@ public class CBoardTest extends AbstractControllerTest {
 
     private void verifyPersonage(AnchorPane personage, boolean has1Wound, boolean has2Wounds, boolean has3Wounds, boolean has4Wounds) {
         verifyThat(personage, isVisible());
-        verifyThat(personage.getChildren().get(0), instanceOf(AnchorPane.class));
+        verifyThat(personage.getChildren().get(0), instanceOf(ImageView.class));
         verifyThat(personage.getChildren().get(1), has1Wound ? isVisible() : isInvisible());
         verifyThat(personage.getChildren().get(2), has2Wounds ? isVisible() : isInvisible());
         verifyThat(personage.getChildren().get(3), has3Wounds ? isVisible() : isInvisible());

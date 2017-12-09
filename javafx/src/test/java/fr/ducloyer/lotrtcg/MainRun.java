@@ -2,11 +2,15 @@ package fr.ducloyer.lotrtcg;
 
 import fr.ducloyer.lotrtcg.controller.CBoard;
 import fr.ducloyer.lotrtcg.controller.CCard;
+import fr.ducloyer.lotrtcg.controller.CPersonage;
 import fr.ducloyer.lotrtcg.scene.LocatedImage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -30,27 +34,40 @@ public class MainRun extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        AnchorPane anchorPane;
+        Parent parent;
         switch (mode) {
             case "card":
-                anchorPane = testCard();
+                parent = testCard();
+                break;
+            case "personage":
+                parent = testPersonage();
                 break;
             case "board":
-                anchorPane = testBoard();
+                parent = testBoard();
                 break;
             default:
-                anchorPane = testBoard();
+                parent = testBoard();
         }
 
-        prepareStage(primaryStage, anchorPane);
+        prepareStage(primaryStage, parent);
     }
 
-    private AnchorPane testCard() throws IOException {
+    private Parent testCard() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/card.fxml"));
-        AnchorPane anchorPane = loader.load();
+        ImageView imageView = loader.load();
         CCard card = loader.getController();
 
         card.addCard(Frodo);
+
+        return new VBox(imageView);
+    }
+
+    private Parent testPersonage() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/personage.fxml"));
+        AnchorPane anchorPane = loader.load();
+        CPersonage personage = loader.getController();
+
+        personage.addPersonage(Gandalf, 2);
 
         return anchorPane;
     }
@@ -68,10 +85,10 @@ public class MainRun extends Application {
         return anchorPane;
     }
 
-    private void prepareStage(Stage primaryStage, AnchorPane anchorPane) {
+    private void prepareStage(Stage primaryStage, Parent parent) {
         primaryStage.setTitle("LOTR-TCG");
         primaryStage.getIcons().add(new LocatedImage("/images/ring-icon-32.png"));
-        primaryStage.setScene(new Scene(anchorPane));
+        primaryStage.setScene(new Scene(parent));
         primaryStage.show();
     }
 }
