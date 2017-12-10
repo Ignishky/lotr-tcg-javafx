@@ -37,7 +37,7 @@ public class CCardTest extends AbstractControllerTest {
     public void should_load_card () {
         loader.<CCard>getController().addCard(Gandalf);
 
-        ImageView card = new FxAssertContext().getNodeFinder().lookup("#card").query();
+        ImageView card = NODE_FINDER.lookup("#card").query();
 
         verifyThat(card, isVisible());
         verifyThat(card.getFitWidth(), is(MIN_WIDTH));

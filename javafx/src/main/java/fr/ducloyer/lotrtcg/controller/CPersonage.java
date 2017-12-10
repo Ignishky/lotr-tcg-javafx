@@ -58,7 +58,7 @@ public class CPersonage extends Personage implements Initializable {
     }
 
     public void addPersonage(Name name, int nbWounds) {
-        super.addPersonage(personageController);
+        super.addPersonage(name);
         personageController.addCard(name);
         for (int i = 0; i < nbWounds; i++) {
             addWound();

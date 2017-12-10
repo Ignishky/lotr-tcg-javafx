@@ -2,20 +2,22 @@ package fr.ducloyer.lotrtcg.core.model;
 
 import lombok.Data;
 
+import static fr.ducloyer.lotrtcg.core.model.CardLoader.loadCard;
+
 @Data
 public class Personage {
 
     private Card personage;
     protected int nbWound = 0;
 
-    public Personage(Name card) {
-        if (card != null) {
-            personage = CardLoader.getInstance().loadCard(card.getCollection());
+    public Personage(Name name) {
+        if (name != null) {
+            personage = loadCard(name);
         }
     }
 
-    public void addPersonage(Card personage) {
-        this.personage = personage;
+    public void addPersonage(Name name) {
+        this.personage = loadCard(name);
     }
 
     public void addWound() {

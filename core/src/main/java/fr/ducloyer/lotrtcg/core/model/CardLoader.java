@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,48 +15,20 @@ import java.util.Map;
 public class CardLoader {
 
     private static final Gson GSON = new Gson();
-    private final Map<Integer, Card> cards = new HashMap<>();
-    private static CardLoader instance;
+    private static final Map<Integer, Card> cards = new HashMap<>();
 
-    private CardLoader() {
-        InputStreamReader inputStreamReader = null;
-        BufferedReader json = null;
+    static {
+        try (InputStreamReader inputStreamReader = new InputStreamReader(CardLoader.class.getResourceAsStream("/card/fellowship.json")); //
+             BufferedReader json = new BufferedReader(inputStreamReader)) {
 
-        try {
-            inputStreamReader = new InputStreamReader(getClass().getResourceAsStream("/card/fellowship.json"));
-            json = new BufferedReader(inputStreamReader);
-
-            List<Card> cards = GSON.fromJson(json, new TypeToken<List<Card>>() {}.getType());
-
-
-            for (Card card : cards) {
-                this.cards.put(card.getCollection(), card);
-            }
-
-        } finally {
-            silentlyClose(inputStreamReader);
-            silentlyClose(json);
+            ((List<Card>)GSON.fromJson(json, new TypeToken<List<Card>>() {}.getType())).forEach(c -> cards.put(c.getCollection(), c));
+        }
+        catch (IOException ioe) {
+            log.error("Unable to close reader", ioe);
         }
     }
 
-    private void silentlyClose(Reader reader) {
-        if (reader != null) {
-            try {
-                reader.close();
-            } catch (IOException ioe) {
-                log.error("Unable to close reader", ioe);
-            }
-        }
-    }
-
-    public static CardLoader getInstance() {
-        if (instance == null) {
-            instance = new CardLoader();
-        }
-        return instance;
-    }
-
-    public Card loadCard(int number) {
-        return cards.get(number);
+    public static Card loadCard(Name name) {
+        return cards.get(name.getCollection());
     }
 }

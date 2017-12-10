@@ -13,22 +13,10 @@ public class Card {
         FREE_PEOPLE, SHADOW
     }
 
-    private static final CardLoader LOADER = CardLoader.getInstance();
-
     protected int collection;
     protected Side side;
     protected String name;
     protected String picture;
     protected int strength;
     protected int vitality;
-
-    protected void load(int number) {
-        Card card = LOADER.loadCard(number);
-        collection = card.collection;
-        side = card.side;
-        name = card.name;
-        picture = card.picture;
-        strength = card.strength;
-        vitality = card.vitality;
-    }
 }
