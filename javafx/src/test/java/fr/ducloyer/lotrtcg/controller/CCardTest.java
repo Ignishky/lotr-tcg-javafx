@@ -13,7 +13,7 @@ import org.testfx.service.finder.NodeFinder;
 import java.io.IOException;
 
 import static fr.ducloyer.lotrtcg.controller.CCard.*;
-import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
+import static fr.ducloyer.lotrtcg.core.model.Name.Gandalf;
 import static fr.ducloyer.lotrtcg.utils.ImageMatchers.hasImage;
 import static javafx.scene.input.MouseButton.SECONDARY;
 import static org.hamcrest.Matchers.is;

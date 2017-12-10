@@ -1,6 +1,6 @@
 package fr.ducloyer.lotrtcg.controller;
 
-import fr.ducloyer.lotrtcg.core.model.Card.Name;
+import fr.ducloyer.lotrtcg.core.model.Name;
 import fr.ducloyer.lotrtcg.core.model.Personage;
 import fr.ducloyer.lotrtcg.core.utils.EndGameException;
 import javafx.fxml.FXML;

@@ -8,7 +8,7 @@ public class Personage {
     private Card personage;
     protected int nbWound = 0;
 
-    public Personage(Card.Name card) {
+    public Personage(Name card) {
         if (card != null) {
             personage = CardLoader.getInstance().loadCard(card.getCollection());
         }

@@ -2,7 +2,7 @@ package fr.ducloyer.lotrtcg.core.model;
 
 import org.junit.Test;
 
-import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
+import static fr.ducloyer.lotrtcg.core.model.Name.Gandalf;
 import static fr.ducloyer.lotrtcg.core.model.Card.Side.FREE_PEOPLE;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;

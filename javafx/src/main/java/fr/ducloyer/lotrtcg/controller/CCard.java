@@ -1,6 +1,7 @@
 package fr.ducloyer.lotrtcg.controller;
 
 import fr.ducloyer.lotrtcg.core.model.Card;
+import fr.ducloyer.lotrtcg.core.model.Name;
 import fr.ducloyer.lotrtcg.scene.LocatedImage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

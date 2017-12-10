@@ -3,7 +3,7 @@ package fr.ducloyer.lotrtcg.core.utils;
 import fr.ducloyer.lotrtcg.core.model.Personage;
 import org.junit.Test;
 
-import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
+import static fr.ducloyer.lotrtcg.core.model.Name.*;
 import static fr.ducloyer.lotrtcg.core.utils.FightResolver.fight;
 import static fr.ducloyer.lotrtcg.core.utils.FightResult.Actions.KILL;
 import static fr.ducloyer.lotrtcg.core.utils.FightResult.Actions.WOUND;

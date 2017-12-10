@@ -11,7 +11,7 @@ import java.io.IOException;
 
 import static fr.ducloyer.lotrtcg.controller.CCard.MIN_HEIGHT;
 import static fr.ducloyer.lotrtcg.controller.CCard.MIN_WIDTH;
-import static fr.ducloyer.lotrtcg.core.model.Card.Name.Gandalf;
+import static fr.ducloyer.lotrtcg.core.model.Name.Gandalf;
 import static fr.ducloyer.lotrtcg.core.model.Card.Side.FREE_PEOPLE;
 import static org.hamcrest.Matchers.is;
 import static org.testfx.api.FxAssert.verifyThat;

@@ -1,6 +1,6 @@
 package fr.ducloyer.lotrtcg.controller;
 
-import fr.ducloyer.lotrtcg.core.model.Card.Name;
+import fr.ducloyer.lotrtcg.core.model.Name;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,7 +16,7 @@ import org.testfx.service.finder.NodeFinder;
 import java.io.IOException;
 import java.util.Set;
 
-import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
+import static fr.ducloyer.lotrtcg.core.model.Name.*;
 import static org.hamcrest.Matchers.*;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isInvisible;

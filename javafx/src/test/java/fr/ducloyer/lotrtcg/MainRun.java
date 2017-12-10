@@ -16,7 +16,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
-import static fr.ducloyer.lotrtcg.core.model.Card.Name.*;
+import static fr.ducloyer.lotrtcg.core.model.Name.*;
 
 @Slf4j
 public class MainRun extends Application {
