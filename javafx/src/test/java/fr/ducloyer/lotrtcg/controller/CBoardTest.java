@@ -1,13 +1,17 @@
 package fr.ducloyer.lotrtcg.controller;
 
 import fr.ducloyer.lotrtcg.core.model.Name;
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.api.FxAssertContext;
@@ -51,11 +55,11 @@ public class CBoardTest extends AbstractControllerTest {
     @Test
     public void should_load_board() {
 
-        initPersonages(Frodo, 0, null, GoblinMarksman, null,0);
+        initPersonages(Frodo, 0, null, GoblinMarksman, null, 0);
 
-        verifyPersonage(companion1, false, false);
+        verifyPersonage(companion1, 0);
         verifyThat(companion2, isInvisible());
-        verifyPersonage(minion1, false, false);
+        verifyPersonage(minion1, 0);
         verifyThat(minion2, isInvisible());
 
         verifyThat(fight, isVisible());
@@ -68,23 +72,23 @@ public class CBoardTest extends AbstractControllerTest {
     @Test
     public void should_wound_personage_for_the_fight() {
 
-        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, MoriaScout,0);
+        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, MoriaScout, 0);
 
         clickOn("#action");
 
-        verifyPersonage(companion1, true, false);
+        verifyPersonage(companion1, 1);
         verifyThat(info.getText(), endsWith("Frodo has been wounded.\n"));
 
         clickOn("#action");
 
-        verifyPersonage(minion2, true, false);
+        verifyPersonage(minion2, 1);
         verifyThat(info.getText(), endsWith("Moria Scout has been wounded.\n"));
     }
 
     @Test
     public void should_end_turn_when_all_companion_have_fight() {
 
-        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, MoriaScout,0);
+        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, MoriaScout, 0);
 
         verifyThat(fight.getText(), is("Fight"));
         clickOn("#action");
@@ -98,22 +102,21 @@ public class CBoardTest extends AbstractControllerTest {
     @Test
     public void should_rewound_first_companion_in_the_second_turn() {
 
-        initPersonages(Frodo, 0, null, GoblinMarksman, null,0);
+        initPersonages(Frodo, 0, null, GoblinMarksman, null, 0);
 
         clickOn("#action"); // fight 1
         clickOn("#action"); // next turn
         clickOn("#action"); // fight 1
 
-        verifyPersonage(companion1, true, true);
+        verifyPersonage(companion1, 2);
 
-        verifyThat(companion1.getChildren().get(2), isVisible());
         verifyThat(info.getText(), endsWith("Frodo has been wounded.\nStart next turn\nFrodo has been wounded.\n"));
     }
 
     @Test
     public void should_kill_scout_after_two_wounds() {
 
-        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, MoriaScout,1);
+        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, MoriaScout, 1);
 
         clickOn("#action"); // fight 1
         clickOn("#action"); // fight 2
@@ -125,7 +128,7 @@ public class CBoardTest extends AbstractControllerTest {
     @Test
     public void should_not_fight_when_no_opponent() {
 
-        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, null,0);
+        initPersonages(Frodo, 0, Gandalf, GoblinMarksman, null, 0);
 
         clickOn("#action"); // fight 1
 
@@ -135,7 +138,7 @@ public class CBoardTest extends AbstractControllerTest {
     @Test
     public void should_end_game_when_Frodo_dies() {
 
-        initPersonages(Frodo, 3, null, null, null,0);
+        initPersonages(Frodo, 3, null, null, null, 0);
         CBoard cBoard = loader.getController();
         cBoard.addCompanion(Frodo, 3);
         cBoard.addMinion(GoblinMarksman);
@@ -148,18 +151,19 @@ public class CBoardTest extends AbstractControllerTest {
 
     private void initPersonages(Name companion1, int nbWoundC1, Name companion2, Name minion1, Name minion2, int nbWoundM2) {
         CBoard cBoard = loader.getController();
-        if(companion1 != null) cBoard.addCompanion(companion1, nbWoundC1);
-        if(companion2 != null) cBoard.addCompanion(companion2, 0);
-        if(minion1 != null) cBoard.addMinion(minion1, 0);
-        if(minion2 != null) cBoard.addMinion(minion2, nbWoundM2);
+        if (companion1 != null) cBoard.addCompanion(companion1, nbWoundC1);
+        if (companion2 != null) cBoard.addCompanion(companion2, 0);
+        if (minion1 != null) cBoard.addMinion(minion1, 0);
+        if (minion2 != null) cBoard.addMinion(minion2, nbWoundM2);
     }
 
-    private void verifyPersonage(AnchorPane personage, boolean has1Wound, boolean has2Wounds) {
+    private void verifyPersonage(AnchorPane personage, int nbWounds) {
         verifyThat(personage, isVisible());
-        verifyThat(personage.getChildren().get(0), instanceOf(ImageView.class));
-        verifyThat(personage.getChildren().get(1), has1Wound ? isVisible() : isInvisible());
-        verifyThat(personage.getChildren().get(2), has2Wounds ? isVisible() : isInvisible());
-        verifyThat(personage.getChildren().get(3), isInvisible());
-        verifyThat(personage.getChildren().get(4), isInvisible());
+
+        ObservableList<Node> wounds = NODE_FINDER.lookup("#wounds").<TilePane> query().getChildren();
+        verifyThat(wounds, hasSize(nbWounds));
+        for (Node wound : wounds) {
+            verifyThat(((LocatedImage) ((ImageView) wound).getImage()).getURL(), is("/images/wound.png"));
+        }
     }
 }

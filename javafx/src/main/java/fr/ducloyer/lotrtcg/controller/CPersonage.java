@@ -3,54 +3,40 @@ package fr.ducloyer.lotrtcg.controller;
 import fr.ducloyer.lotrtcg.core.model.Name;
 import fr.ducloyer.lotrtcg.core.model.Personage;
 import fr.ducloyer.lotrtcg.core.utils.EndGameException;
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
-import static com.google.common.collect.Lists.newArrayList;
-
 @Slf4j
-public class CPersonage extends Personage implements Initializable {
+public class CPersonage implements Initializable {
+
+    private final static Image WOUND = new LocatedImage("/images/wound.png");
 
     @FXML
     private Node root;
 
     @FXML
+    @Getter
     private CCard personageController;
 
     @FXML
-    private ImageView woundOne;
-    @FXML
-    private ImageView woundTwo;
-    @FXML
-    private ImageView woundThree;
-    @FXML
-    private ImageView woundFour;
+    private TilePane wounds;
 
-    private List<ImageView> wounds;
-
-    public CPersonage() {
-        super(null);
-    }
+    @Getter
+    private Personage abstraction;
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
-        woundOne.setImage(new Image("/images/wound.png"));
-        woundOne.setVisible(false);
-        woundTwo.setImage(new Image("/images/wound.png"));
-        woundTwo.setVisible(false);
-        woundThree.setImage(new Image("/images/wound.png"));
-        woundThree.setVisible(false);
-        woundFour.setImage(new Image("/images/wound.png"));
-        woundFour.setVisible(false);
-        wounds = newArrayList(woundOne, woundTwo, woundThree, woundFour);
     }
 
     public void addPersonage(Name name) {
@@ -58,7 +44,7 @@ public class CPersonage extends Personage implements Initializable {
     }
 
     public void addPersonage(Name name, int nbWounds) {
-        super.addPersonage(name);
+        abstraction = new Personage(name);
         personageController.addCard(name);
         for (int i = 0; i < nbWounds; i++) {
             addWound();
@@ -67,8 +53,8 @@ public class CPersonage extends Personage implements Initializable {
     }
 
     public void addWound() {
-        wounds.get(nbWound).setVisible(true);
-        super.addWound();
+        abstraction.addWound();
+        Platform.runLater(() -> wounds.getChildren().add(new ImageView(WOUND)));
         log.info("{} has been wounded", personageController.getName());
         Toastr.append(personageController.getName() + " has been wounded.");
     }

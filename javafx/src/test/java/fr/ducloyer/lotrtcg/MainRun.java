@@ -67,7 +67,7 @@ public class MainRun extends Application {
         AnchorPane anchorPane = loader.load();
         CPersonage personage = loader.getController();
 
-        personage.addPersonage(Gandalf, 2);
+        personage.addPersonage(Gandalf, 4);
 
         return anchorPane;
     }

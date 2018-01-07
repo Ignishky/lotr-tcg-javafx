@@ -91,15 +91,15 @@ public class CBoard implements Initializable {
         CPersonage companion = companionsControllers.get(fightPos);
         CPersonage minion = minionsControllers.get(fightPos);
 
-        FightResult fightResult = fight(companion, minion);
+        FightResult fightResult = fight(companion.getAbstraction(), minion.getAbstraction());
+        CPersonage personage = fightResult.getPersonage().getPersonage().getName().equals(companion.getPersonageController().getName()) ? companion : minion;
         switch (fightResult.getAction()) {
             case WOUND:
-                fightResult.getPersonage().addWound();
+                personage.addWound();
                 break;
             case KILL:
-                CPersonage personage = (CPersonage) fightResult.getPersonage();
                 try {
-                    if (FREE_PEOPLE == personage.getPersonage().getSide()) {
+                    if (FREE_PEOPLE == personage.getPersonageController().getSide()) {
                         nbCompanions--;
                         companionsControllers.get(companionsControllers.indexOf(personage)).kill();
                     } else {

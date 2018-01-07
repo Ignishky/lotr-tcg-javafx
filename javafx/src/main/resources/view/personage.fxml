@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.TilePane?>
 
-<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ducloyer.lotrtcg.controller.CPersonage">
-   <fx:include fx:id="personage" source="card.fxml" />
-   <ImageView fx:id="woundOne" layoutX="10.0" layoutY="20.0" />
-   <ImageView fx:id="woundTwo" layoutX="40.0" layoutY="20.0" />
-   <ImageView fx:id="woundThree" layoutX="70.0" layoutY="20.0" />
-   <ImageView fx:id="woundFour" layoutX="10.0" layoutY="50.0" />
+<AnchorPane fx:id="root" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.ducloyer.lotrtcg.controller.CPersonage">
+    <fx:include fx:id="personage" source="card.fxml" />
+    <TilePane fx:id="wounds" maxWidth="108" prefColumns="3">
+      <padding><Insets left="10.0" top="20.0" /></padding>
+    </TilePane>
 </AnchorPane>

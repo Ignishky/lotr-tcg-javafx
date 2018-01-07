@@ -44,6 +44,10 @@ public class CCard implements Initializable {
         return abstraction.getName();
     }
 
+    public Card.Side getSide() {
+        return abstraction.getSide();
+    }
+
     public void addCard(Name name) {
         abstraction = loadCard(name);
         card.setImage(new LocatedImage(abstraction.getPicture()));
