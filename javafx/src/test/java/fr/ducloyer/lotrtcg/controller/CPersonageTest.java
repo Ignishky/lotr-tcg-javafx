@@ -55,7 +55,7 @@ public class CPersonageTest extends AbstractControllerTest {
     }
 
     @Test
-    public void should_add_wound() {
+    public void should_add_wound() throws InterruptedException {
         CPersonage controller = loader.getController();
         controller.addPersonage(Gandalf);
         controller.addWound();
@@ -63,6 +63,8 @@ public class CPersonageTest extends AbstractControllerTest {
         controller.addWound();
 
         ObservableList<Node> wounds = NODE_FINDER.lookup("#wounds").<TilePane>query().getChildren();
+        // Wait for all runLater calls to end
+        Thread.sleep(500);
         verifyThat(wounds, hasSize(3));
         verifyThat(((LocatedImage)((ImageView) wounds.get(0)).getImage()).getURL(), is("/images/wound.png"));
         verifyThat(((LocatedImage)((ImageView) wounds.get(1)).getImage()).getURL(), is("/images/wound.png"));
