@@ -10,7 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
@@ -53,13 +53,19 @@ public class MainRun extends Application {
     }
 
     private Parent testCard() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/card.fxml"));
-        ImageView imageView = loader.load();
-        CCard card = loader.getController();
-
+        FXMLLoader frodoLoader = new FXMLLoader(getClass().getResource("/view/card.fxml"));
+        ImageView frodo = frodoLoader.load();
+        CCard card = frodoLoader.getController();
         card.addCard(Frodo);
 
-        return new VBox(imageView);
+        FXMLLoader backLoader = new FXMLLoader(getClass().getResource("/view/card.fxml"));
+        ImageView back = backLoader.load();
+        CCard card2 = backLoader.getController();
+        card2.addCard(Back);
+
+        HBox hBox = new HBox(frodo, back);
+        hBox.setSpacing(2.0);
+        return hBox;
     }
 
     private Parent testPersonage() throws IOException {
