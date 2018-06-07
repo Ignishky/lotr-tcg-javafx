@@ -23,11 +23,11 @@ under the License.
     <link>https://github.com/Ignishky/lotr-tcg/core</link>
     <description>Core Module - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2017</copyright>
+    <copyright>&#169;2018</copyright>
     <item>
-      <title>File: 6,
+      <title>File: 7,
              Errors: 0,
-             Warnings: 0,
+             Warnings: 3,
              Infos: 0
       </title>
             <link>https://github.com/Ignishky/lotr-tcg/core/checkstyle.html</link>
@@ -94,7 +94,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  3
                 </td>
                 <td>
                   0
@@ -117,6 +117,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://github.com/Ignishky/lotr-tcg/core/checkstyle.html#fr.ducloyer.lotrtcg.core.model.Personage.java">fr/ducloyer/lotrtcg/core/model/Personage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/Ignishky/lotr-tcg/core/checkstyle.html#fr.ducloyer.lotrtcg.core.model.Name.java">fr/ducloyer/lotrtcg/core/model/Name.java</a>
                 </td>
                 <td>
                   0
