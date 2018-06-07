@@ -11,6 +11,12 @@ This project is under GPL v2 licence
 ## Site
 https://ignishky.github.io/lotr-tcg/
 
+## Build site
+```bash
+mvn clean site site:stage
+mvn scm-publish:publish-scm
+```
+
 ## Documentation
 https://github.com/Ignishky/lotr-tcg/wiki
 
