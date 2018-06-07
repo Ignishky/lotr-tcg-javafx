@@ -12,9 +12,20 @@ This project is under GPL v2 licence
 https://ignishky.github.io/lotr-tcg/
 
 ## Documentation
-https://github.com/Ignishky/lotr_tcg/wiki
+https://github.com/Ignishky/lotr-tcg/wiki
 
 ## Installation
 
+### Compile source
+```bash
+mvn clean install -T4
+```
+
+### Execute program
+```bash
+cd javafx
+mvn exec:java -Dexec.mainClass="fr.ducloyer.lotrtcg.Main"
+```
+
 ## Issues
-https://github.com/Ignishky/lotr_tcg/issues
+https://github.com/Ignishky/lotr-tcg/issues
