@@ -38,7 +38,8 @@ public class CCard implements Initializable {
     private ImageView zoom;
 
     @FXML
-    public void initialize(URL url, ResourceBundle rb) {}
+    public void initialize(URL url, ResourceBundle rb) {
+    }
 
     public String getName() {
         return abstraction.getName();
@@ -70,8 +71,7 @@ public class CCard implements Initializable {
                 stage.initModality(APPLICATION_MODAL);
                 stage.initOwner(card.getScene().getWindow());
                 stage.showAndWait();
-            }
-            else {
+            } else {
                 stage = (Stage) zoom.getScene().getWindow();
                 stage.close();
             }

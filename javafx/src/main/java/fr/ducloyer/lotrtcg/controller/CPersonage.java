@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 @Slf4j
 public class CPersonage implements Initializable {
 
-    private final static Image WOUND = new LocatedImage("/images/wound.png");
+    private static final Image WOUND = new LocatedImage("/images/wound.png");
 
     @FXML
     private Node root;
@@ -37,6 +37,10 @@ public class CPersonage implements Initializable {
 
     @FXML
     public void initialize(URL url, ResourceBundle rb) {
+    }
+
+    public String getName() {
+        return abstraction.getName();
     }
 
     public void addPersonage(Name name) {

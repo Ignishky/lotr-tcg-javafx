@@ -22,7 +22,7 @@ public class ImageMatchers {
 
             @Override
             public void describeMismatch(Object item, Description description) {
-                description.appendText("was ").appendValue(((LocatedImage) item).getURL());
+                description.appendText("was ").appendValue(((LocatedImage) item).getUrl());
             }
         };
     }

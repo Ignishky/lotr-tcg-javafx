@@ -92,7 +92,7 @@ public class CBoard implements Initializable {
         CPersonage minion = minionsControllers.get(fightPos);
 
         FightResult fightResult = fight(companion.getAbstraction(), minion.getAbstraction());
-        CPersonage personage = fightResult.getPersonage().getPersonage().getName().equals(companion.getPersonageController().getName()) ? companion : minion;
+        CPersonage personage = fightResult.getPersonage().getName().equals(companion.getName()) ? companion : minion;
         switch (fightResult.getAction()) {
             case WOUND:
                 personage.addWound();

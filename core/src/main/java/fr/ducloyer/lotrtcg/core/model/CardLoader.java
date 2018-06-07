@@ -18,12 +18,13 @@ public class CardLoader {
     private static final Map<Integer, Card> cards = new HashMap<>();
 
     static {
-        try (InputStreamReader inputStreamReader = new InputStreamReader(CardLoader.class.getResourceAsStream("/card/fellowship.json")); //
-             BufferedReader json = new BufferedReader(inputStreamReader)) {
+        try (InputStreamReader stream = new InputStreamReader(CardLoader.class.getResourceAsStream("/card/fellowship.json"));
+             BufferedReader json = new BufferedReader(stream)) {
 
-            ((List<Card>)GSON.fromJson(json, new TypeToken<List<Card>>() {}.getType())).forEach(c -> cards.put(c.getCollection(), c));
-        }
-        catch (IOException ioe) {
+            List<Card> cardList = GSON.fromJson(json, new TypeToken<List<Card>>() {
+            }.getType());
+            cardList.forEach(c -> cards.put(c.getCollection(), c));
+        } catch (IOException ioe) {
             log.error("Unable to close reader", ioe);
         }
     }

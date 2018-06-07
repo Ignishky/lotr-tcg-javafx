@@ -66,8 +66,8 @@ public class CPersonageTest extends AbstractControllerTest {
         // Wait for all runLater calls to end
         Thread.sleep(500);
         verifyThat(wounds, hasSize(3));
-        verifyThat(((LocatedImage)((ImageView) wounds.get(0)).getImage()).getURL(), is("/images/wound.png"));
-        verifyThat(((LocatedImage)((ImageView) wounds.get(1)).getImage()).getURL(), is("/images/wound.png"));
-        verifyThat(((LocatedImage)((ImageView) wounds.get(2)).getImage()).getURL(), is("/images/wound.png"));
+        verifyThat(((LocatedImage)((ImageView) wounds.get(0)).getImage()).getUrl(), is("/images/wound.png"));
+        verifyThat(((LocatedImage)((ImageView) wounds.get(1)).getImage()).getUrl(), is("/images/wound.png"));
+        verifyThat(((LocatedImage)((ImageView) wounds.get(2)).getImage()).getUrl(), is("/images/wound.png"));
     }
 }

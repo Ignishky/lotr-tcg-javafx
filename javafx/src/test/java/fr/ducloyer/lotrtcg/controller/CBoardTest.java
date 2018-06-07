@@ -163,7 +163,7 @@ public class CBoardTest extends AbstractControllerTest {
         ObservableList<Node> wounds = NODE_FINDER.lookup("#wounds").<TilePane> query().getChildren();
         verifyThat(wounds, hasSize(nbWounds));
         for (Node wound : wounds) {
-            verifyThat(((LocatedImage) ((ImageView) wound).getImage()).getURL(), is("/images/wound.png"));
+            verifyThat(((LocatedImage) ((ImageView) wound).getImage()).getUrl(), is("/images/wound.png"));
         }
     }
 }

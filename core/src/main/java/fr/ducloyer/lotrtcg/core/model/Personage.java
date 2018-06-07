@@ -20,6 +20,10 @@ public class Personage {
         nbWound++;
     }
 
+    public String getName() {
+        return personage.getName();
+    }
+
     public int getStrength() {
         return personage.getStrength();
     }
