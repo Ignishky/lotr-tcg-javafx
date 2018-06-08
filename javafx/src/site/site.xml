@@ -16,7 +16,7 @@
             <item name="Plugin updates" href="plugin-updates-report.html" />
             <item name="Checkstyle" href="checkstyle.html" />
             <item name="Surefire" href="surefire-report.html" />
-            <item name="Cobertura" href="cobertura/index.html" />
+            <item name="Jacoco" href="jacoco/index.html" />
         </menu>
     </body>
 </project>
