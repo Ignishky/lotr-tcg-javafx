@@ -13,6 +13,10 @@
     <name>Core Module</name>
     <description>This module contains all the common classes used regardless of GUI.</description>
 
+    <properties>
+        <build-tools.basedir>${project.parent.basedir}/build-tools</build-tools.basedir>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>

@@ -11,4 +11,7 @@
 
     <artifactId>build-tools</artifactId>
 
+    <properties>
+        <build-tools.basedir>${project.basedir}</build-tools.basedir>
+    </properties>
 </project>

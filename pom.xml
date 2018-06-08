@@ -35,10 +35,12 @@
     <url>https://github.com/Ignishky/lotr-tcg</url>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <build-tools.basedir>${project.basedir}/build-tools</build-tools.basedir>
+        <maven.version.rules>file:///${build-tools.basedir}/src/config/versions-rules.xml</maven.version.rules>
 
         <scmPublish.checkoutDirectory>${project.build.directory}/scmpublish</scmPublish.checkoutDirectory>
 
@@ -351,11 +353,6 @@
                     <plugin>
                         <groupId>org.jacoco</groupId>
                         <artifactId>jacoco-maven-plugin</artifactId>
-                        <configuration>
-                            <excludes>
-                                <exclude>**/*.class</exclude>
-                            </excludes>
-                        </configuration>
                         <executions>
                             <execution>
                                 <id>agent</id>

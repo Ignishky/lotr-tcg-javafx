@@ -14,6 +14,8 @@
     <description>This module contains a JavaFx implementation of the GUI.</description>
 
     <properties>
+        <build-tools.basedir>${project.parent.basedir}/build-tools</build-tools.basedir>
+
         <exec.mainClass>fr.ducloyer.lotrtcg.Main</exec.mainClass>
     </properties>
 

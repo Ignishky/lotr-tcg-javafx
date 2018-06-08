@@ -2,8 +2,8 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
     <body>
         <menu name="Modules">
-            <item name="Core Module" href="core/lotr-tcg-core/index.html" />
-            <item name="Application JavaFx" href="javafx/lotr-tcg-javafx/index.html" />
+            <item name="Core Module" href="core/core/index.html" />
+            <item name="Application JavaFx" href="javafx/javafx/index.html" />
         </menu>
         <menu name="Overview">
             <item name="About" href="index.html" />
