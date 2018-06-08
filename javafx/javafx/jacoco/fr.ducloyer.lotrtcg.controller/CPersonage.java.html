@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CPersonage.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application JavaFx</a> &gt; <a href="index.source.html" class="el_package">fr.ducloyer.lotrtcg.controller</a> &gt; <span class="el_source">CPersonage.java</span></div><h1>CPersonage.java</h1><pre class="source lang-java linenums">package fr.ducloyer.lotrtcg.controller;
+
+import fr.ducloyer.lotrtcg.core.model.Name;
+import fr.ducloyer.lotrtcg.core.model.Personage;
+import fr.ducloyer.lotrtcg.core.utils.EndGameException;
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
+import javafx.application.Platform;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.TilePane;
+import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
+
+import java.net.URL;
+import java.util.ResourceBundle;
+
+<span class="fc" id="L20">@Slf4j</span>
+<span class="fc" id="L21">public class CPersonage implements Initializable {</span>
+
+<span class="fc" id="L23">    private static final Image WOUND = new LocatedImage(&quot;/images/wound.png&quot;);</span>
+
+    @FXML
+    private Node root;
+
+    @FXML
+<span class="fc" id="L29">    @Getter</span>
+    private CCard personageController;
+
+    @FXML
+    private TilePane wounds;
+
+<span class="fc" id="L35">    @Getter</span>
+    private Personage abstraction;
+
+    @FXML
+    public void initialize(URL url, ResourceBundle rb) {
+<span class="fc" id="L40">    }</span>
+
+    public String getName() {
+<span class="fc" id="L43">        return abstraction.getName();</span>
+    }
+
+    public void addPersonage(Name name) {
+<span class="fc" id="L47">        addPersonage(name, 0);</span>
+<span class="fc" id="L48">    }</span>
+
+    public void addPersonage(Name name, int nbWounds) {
+<span class="fc" id="L51">        abstraction = new Personage(name);</span>
+<span class="fc" id="L52">        personageController.addCard(name);</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for (int i = 0; i &lt; nbWounds; i++) {</span>
+<span class="fc" id="L54">            addWound();</span>
+        }
+<span class="fc" id="L56">        Toastr.append(&quot;Play card &quot; + personageController.getName() + &quot;.&quot;);</span>
+<span class="fc" id="L57">    }</span>
+
+    public void addWound() {
+<span class="fc" id="L60">        abstraction.addWound();</span>
+<span class="fc" id="L61">        Platform.runLater(() -&gt; wounds.getChildren().add(new ImageView(WOUND)));</span>
+<span class="fc" id="L62">        log.info(&quot;{} has been wounded&quot;, personageController.getName());</span>
+<span class="fc" id="L63">        Toastr.append(personageController.getName() + &quot; has been wounded.&quot;);</span>
+<span class="fc" id="L64">    }</span>
+
+    public void kill() throws EndGameException {
+<span class="fc" id="L67">        root.setVisible(false);</span>
+<span class="fc" id="L68">        log.info(&quot;{} has been killed&quot;, personageController.getName());</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        if (personageController.getName().startsWith(&quot;Frodo&quot;)) {</span>
+<span class="fc" id="L70">            Toastr.append(personageController.getName() + &quot; has been killed. YOU LOOSE !!!!&quot;);</span>
+<span class="fc" id="L71">            throw new EndGameException();</span>
+        } else {
+<span class="fc" id="L73">            Toastr.append(personageController.getName() + &quot; has been killed.&quot;);</span>
+        }
+<span class="fc" id="L75">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

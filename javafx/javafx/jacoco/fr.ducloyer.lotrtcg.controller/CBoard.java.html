@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CBoard.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application JavaFx</a> &gt; <a href="index.source.html" class="el_package">fr.ducloyer.lotrtcg.controller</a> &gt; <span class="el_source">CBoard.java</span></div><h1>CBoard.java</h1><pre class="source lang-java linenums">package fr.ducloyer.lotrtcg.controller;
+
+import fr.ducloyer.lotrtcg.core.model.Name;
+import fr.ducloyer.lotrtcg.core.utils.EndGameException;
+import fr.ducloyer.lotrtcg.core.utils.FightResult;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import lombok.extern.slf4j.Slf4j;
+
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static fr.ducloyer.lotrtcg.core.model.Card.Side.FREE_PEOPLE;
+import static fr.ducloyer.lotrtcg.core.utils.FightResolver.fight;
+
+<span class="fc" id="L21">@Slf4j</span>
+<span class="fc" id="L22">public class CBoard implements Initializable {</span>
+
+    @FXML
+    private Parent companion1;
+    @FXML
+    private CPersonage companion1Controller;
+    @FXML
+    private Parent companion2;
+    @FXML
+    private CPersonage companion2Controller;
+
+<span class="fc" id="L33">    private int nbCompanions = 0;</span>
+    private List&lt;Parent&gt; companionsViews;
+    private List&lt;CPersonage&gt; companionsControllers;
+
+    @FXML
+    private Parent minion1;
+    @FXML
+    private CPersonage minion1Controller;
+    @FXML
+    private Parent minion2;
+    @FXML
+    private CPersonage minion2Controller;
+
+<span class="fc" id="L46">    private int nbMinions = 0;</span>
+    private List&lt;Parent&gt; minions;
+    private List&lt;CPersonage&gt; minionsControllers;
+
+    @FXML
+    private Button action;
+<span class="fc" id="L52">    private int fightPos = 0;</span>
+
+    @FXML
+    private TextArea info;
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+<span class="fc" id="L59">        Toastr.init(info);</span>
+<span class="fc" id="L60">        companionsViews = newArrayList(companion1, companion2);</span>
+<span class="fc" id="L61">        companionsControllers = newArrayList(companion1Controller, companion2Controller);</span>
+<span class="fc" id="L62">        minions = newArrayList(minion1, minion2);</span>
+<span class="fc" id="L63">        minionsControllers = newArrayList(minion1Controller, minion2Controller);</span>
+<span class="fc" id="L64">    }</span>
+
+    public void addCompanion(Name card) {
+<span class="fc" id="L67">        addCompanion(card, 0);</span>
+<span class="fc" id="L68">    }</span>
+
+    public void addCompanion(Name card, int nbWounds) {
+<span class="fc" id="L71">        log.info(&quot;Add companion {}&quot;, card.getCollection());</span>
+<span class="fc" id="L72">        companionsControllers.get(nbCompanions).addPersonage(card, nbWounds);</span>
+<span class="fc" id="L73">        companionsViews.get(nbCompanions).setVisible(true);</span>
+<span class="fc" id="L74">        nbCompanions++;</span>
+<span class="fc" id="L75">    }</span>
+
+    public void addMinion(Name card) {
+<span class="fc" id="L78">        addMinion(card, 0);</span>
+<span class="fc" id="L79">    }</span>
+
+    public void addMinion(Name card, int nbWounds) {
+<span class="fc" id="L82">        log.info(&quot;Add minion {}&quot;, card.getCollection());</span>
+<span class="fc" id="L83">        minionsControllers.get(nbMinions).addPersonage(card, nbWounds);</span>
+<span class="fc" id="L84">        minions.get(nbMinions).setVisible(true);</span>
+<span class="fc" id="L85">        nbMinions++;</span>
+<span class="fc" id="L86">    }</span>
+
+    @FXML
+    public void startFight() {
+
+<span class="fc" id="L91">        CPersonage companion = companionsControllers.get(fightPos);</span>
+<span class="fc" id="L92">        CPersonage minion = minionsControllers.get(fightPos);</span>
+
+<span class="fc" id="L94">        FightResult fightResult = fight(companion.getAbstraction(), minion.getAbstraction());</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        CPersonage personage = fightResult.getPersonage().getName().equals(companion.getName()) ? companion : minion;</span>
+<span class="pc bpc" id="L96" title="1 of 3 branches missed.">        switch (fightResult.getAction()) {</span>
+            case WOUND:
+<span class="fc" id="L98">                personage.addWound();</span>
+<span class="fc" id="L99">                break;</span>
+            case KILL:
+                try {
+<span class="fc bfc" id="L102" title="All 2 branches covered.">                    if (FREE_PEOPLE == personage.getPersonageController().getSide()) {</span>
+<span class="fc" id="L103">                        nbCompanions--;</span>
+<span class="nc" id="L104">                        companionsControllers.get(companionsControllers.indexOf(personage)).kill();</span>
+                    } else {
+<span class="fc" id="L106">                        nbMinions--;</span>
+<span class="fc" id="L107">                        minionsControllers.get(minionsControllers.indexOf(personage)).kill();</span>
+                    }
+<span class="fc" id="L109">                } catch (EndGameException ege) {</span>
+<span class="fc" id="L110">                    action.setDisable(true);</span>
+<span class="fc" id="L111">                }</span>
+<span class="fc" id="L112">                break;</span>
+            default:
+<span class="nc" id="L114">                throw new IllegalStateException(&quot;Unexpected fight result action &quot; + fightResult.getAction());</span>
+        }
+
+<span class="fc bfc" id="L117" title="All 2 branches covered.">        if (++fightPos &gt;= Math.min(nbCompanions, nbMinions)) {</span>
+<span class="fc" id="L118">            action.setText(&quot;Next turn&quot;);</span>
+<span class="fc" id="L119">            action.setOnAction(event -&gt; {</span>
+<span class="fc" id="L120">                Toastr.append(&quot;Start next turn&quot;);</span>
+<span class="fc" id="L121">                fightPos = 0;</span>
+<span class="fc" id="L122">                action.setText(&quot;Fight&quot;);</span>
+<span class="fc" id="L123">                action.setOnAction(event1 -&gt; startFight());</span>
+<span class="fc" id="L124">            });</span>
+        }
+<span class="fc" id="L126">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

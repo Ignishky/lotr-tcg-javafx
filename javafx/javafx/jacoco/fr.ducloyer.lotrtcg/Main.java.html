@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application JavaFx</a> &gt; <a href="index.source.html" class="el_package">fr.ducloyer.lotrtcg</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package fr.ducloyer.lotrtcg;
+
+import fr.ducloyer.lotrtcg.controller.CBoard;
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.IOException;
+
+import static fr.ducloyer.lotrtcg.core.model.Name.*;
+
+<span class="fc" id="L16">@Slf4j</span>
+<span class="fc" id="L17">public class Main extends Application {</span>
+
+    public static void main(String[] args) {
+<span class="nc" id="L20">        launch(args);</span>
+<span class="nc" id="L21">    }</span>
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+<span class="fc" id="L25">        log.info(&quot;Start a new game.&quot;);</span>
+
+<span class="fc" id="L27">        prepareStage(primaryStage);</span>
+<span class="fc" id="L28">    }</span>
+
+    private AnchorPane loadBoard() throws IOException {
+<span class="fc" id="L31">        FXMLLoader loader = new FXMLLoader(getClass().getResource(&quot;/view/board.fxml&quot;));</span>
+<span class="fc" id="L32">        AnchorPane anchorPane = loader.load();</span>
+<span class="fc" id="L33">        CBoard board = loader.getController();</span>
+
+<span class="fc" id="L35">        board.addCompanion(Frodo);</span>
+<span class="fc" id="L36">        board.addCompanion(Gandalf);</span>
+<span class="fc" id="L37">        board.addMinion(GoblinMarksman);</span>
+<span class="fc" id="L38">        board.addMinion(MoriaScout);</span>
+
+<span class="fc" id="L40">        return anchorPane;</span>
+    }
+
+    private void prepareStage(Stage primaryStage) throws IOException {
+
+<span class="fc" id="L45">        primaryStage.setTitle(&quot;LOTR-TCG&quot;);</span>
+<span class="fc" id="L46">        primaryStage.getIcons().add(new LocatedImage(&quot;/images/ring-icon-32.png&quot;));</span>
+<span class="fc" id="L47">        primaryStage.setScene(new Scene(loadBoard()));</span>
+<span class="fc" id="L48">        primaryStage.show();</span>
+<span class="fc" id="L49">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

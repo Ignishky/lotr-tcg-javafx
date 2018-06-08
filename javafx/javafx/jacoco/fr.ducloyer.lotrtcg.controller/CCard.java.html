@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CCard.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Application JavaFx</a> &gt; <a href="index.source.html" class="el_package">fr.ducloyer.lotrtcg.controller</a> &gt; <span class="el_source">CCard.java</span></div><h1>CCard.java</h1><pre class="source lang-java linenums">package fr.ducloyer.lotrtcg.controller;
+
+import fr.ducloyer.lotrtcg.core.model.Card;
+import fr.ducloyer.lotrtcg.core.model.Name;
+import fr.ducloyer.lotrtcg.scene.LocatedImage;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import static fr.ducloyer.lotrtcg.core.model.CardLoader.loadCard;
+import static javafx.scene.input.MouseButton.SECONDARY;
+import static javafx.stage.Modality.APPLICATION_MODAL;
+
+<span class="fc" id="L24">@Slf4j</span>
+<span class="fc" id="L25">public class CCard implements Initializable {</span>
+
+    public static final double HEIGHT = 497.0;
+    public static final double WIDTH = 357.0;
+
+    public static final double MIN_HEIGHT = 150.0;
+    public static final double MIN_WIDTH = 109.0;
+
+    private Card abstraction;
+
+    @FXML
+    private ImageView card;
+    @FXML
+    private ImageView zoom;
+
+    @FXML
+    public void initialize(URL url, ResourceBundle rb) {
+<span class="fc" id="L42">    }</span>
+
+    public String getName() {
+<span class="fc" id="L45">        return abstraction.getName();</span>
+    }
+
+    public Card.Side getSide() {
+<span class="fc" id="L49">        return abstraction.getSide();</span>
+    }
+
+    public void addCard(Name name) {
+<span class="fc" id="L53">        abstraction = loadCard(name);</span>
+<span class="fc" id="L54">        card.setImage(new LocatedImage(abstraction.getPicture()));</span>
+<span class="fc" id="L55">    }</span>
+
+    @FXML
+    private void showBigDisplay(MouseEvent mouseEvent) throws IOException {
+<span class="pc bpc" id="L59" title="1 of 2 branches missed.">        if (mouseEvent.getButton() == SECONDARY) {</span>
+            Stage stage;
+<span class="pc bpc" id="L61" title="1 of 4 branches missed.">            if (zoom == null || !zoom.isVisible()) {</span>
+<span class="fc" id="L62">                log.info(&quot;Zoom on {}&quot;, abstraction.getName());</span>
+<span class="fc" id="L63">                FXMLLoader loader = new FXMLLoader(getClass().getResource(&quot;/view/zoom.fxml&quot;));</span>
+<span class="fc" id="L64">                AnchorPane anchorPane = loader.load();</span>
+<span class="fc" id="L65">                ImageView zoom = (ImageView) anchorPane.getChildren().get(0);</span>
+<span class="fc" id="L66">                zoom.setImage(new LocatedImage(abstraction.getPicture()));</span>
+<span class="fc" id="L67">                stage = new Stage();</span>
+<span class="fc" id="L68">                stage.setTitle(&quot;Zoom on &quot; + abstraction.getName());</span>
+<span class="fc" id="L69">                stage.getIcons().add(new LocatedImage(&quot;/images/ring-icon-32.png&quot;));</span>
+<span class="fc" id="L70">                stage.setScene(new Scene(anchorPane));</span>
+<span class="fc" id="L71">                stage.initModality(APPLICATION_MODAL);</span>
+<span class="fc" id="L72">                stage.initOwner(card.getScene().getWindow());</span>
+<span class="fc" id="L73">                stage.showAndWait();</span>
+<span class="fc" id="L74">            } else {</span>
+<span class="fc" id="L75">                stage = (Stage) zoom.getScene().getWindow();</span>
+<span class="fc" id="L76">                stage.close();</span>
+            }
+        }
+<span class="fc" id="L79">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.1.201803210924</span></div></body></html>

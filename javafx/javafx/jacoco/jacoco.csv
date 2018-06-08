@@ -1,0 +1,8 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Application JavaFx,fr.ducloyer.lotrtcg.controller,CPersonage,0,138,0,4,0,27,0,13,0,11
+Application JavaFx,fr.ducloyer.lotrtcg.controller,CBoard.new Object() {...},2,17,0,0,0,1,0,1,0,1
+Application JavaFx,fr.ducloyer.lotrtcg.controller,CBoard,23,264,1,8,2,49,1,14,0,10
+Application JavaFx,fr.ducloyer.lotrtcg.controller,Toastr,3,16,0,2,1,5,1,3,1,2
+Application JavaFx,fr.ducloyer.lotrtcg.controller,CCard,0,124,2,4,0,26,2,8,0,7
+Application JavaFx,fr.ducloyer.lotrtcg.scene,LocatedImage,0,10,0,0,0,4,0,2,0,2
+Application JavaFx,fr.ducloyer.lotrtcg,Main,3,65,0,0,2,18,1,5,1,5
