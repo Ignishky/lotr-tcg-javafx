@@ -2,10 +2,8 @@ package fr.ducloyer.lotrtcg.core.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 public class Card {
 
@@ -13,10 +11,10 @@ public class Card {
         FREE_PEOPLE, SHADOW
     }
 
-    protected int collection;
-    protected Side side;
-    protected String name;
-    protected String picture;
-    protected int strength;
-    protected int vitality;
+    private final int collection;
+    private final Side side;
+    private final String name;
+    private final String picture;
+    private final int strength;
+    private final int vitality;
 }
