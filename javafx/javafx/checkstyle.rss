@@ -27,7 +27,7 @@ under the License.
     <item>
       <title>File: 6,
              Errors: 0,
-             Warnings: 6,
+             Warnings: 1,
              Infos: 0
       </title>
             <link>https://github.com/Ignishky/lotr-tcg/javafx/checkstyle.html</link>
@@ -52,7 +52,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
                 </td>
                 <td>
                   0
@@ -80,7 +80,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  0
                 </td>
                 <td>
                   0
@@ -94,7 +94,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
                 </td>
                 <td>
                   0
@@ -122,7 +122,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  0
                 </td>
                 <td>
                   0
