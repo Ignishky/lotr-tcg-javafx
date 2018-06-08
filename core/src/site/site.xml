@@ -2,7 +2,7 @@
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.6.0 http://maven.apache.org/xsd/decoration-1.6.0.xsd">
     <body>
         <menu name="Parent">
-            <item name="lotr-tcg" href="../../index.html" />
+            <item name="Lotr-TCG" href="../../index.html" />
         </menu>
         <menu name="Overview">
             <item name="About" href="index.html" />
