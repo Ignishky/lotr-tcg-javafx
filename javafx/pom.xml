@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>lotr-tcg</artifactId>
-        <groupId>fr.ducloyer</groupId>
-        <version>0.2.0-SNAPSHOT</version>
+        <groupId>fr.ducloyer.lotr-tcg</groupId>
+        <artifactId>parent</artifactId>
+        <version>0.3.0-SNAPSHOT</version>
     </parent>
 
     <artifactId>javafx</artifactId>
@@ -21,7 +21,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>fr.ducloyer</groupId>
+            <groupId>fr.ducloyer.lotr-tcg</groupId>
             <artifactId>core</artifactId>
         </dependency>
 

@@ -3,13 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <prerequisites>
-        <maven>3.0</maven>
-    </prerequisites>
-
-    <groupId>fr.ducloyer</groupId>
-    <artifactId>lotr-tcg</artifactId>
-    <version>0.2.0-SNAPSHOT</version>
+    <groupId>fr.ducloyer.lotr-tcg</groupId>
+    <artifactId>parent</artifactId>
+    <version>0.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Lord of the Rings - Trading Card Game</name>
     <description>This project is a video game from the Lord Of The Rings Trading Card Game.</description>
