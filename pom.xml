@@ -242,10 +242,10 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>8.10.1</version>
+                        <version>8.14</version>
                     </dependency>
                     <dependency>
-                        <groupId>fr.ducloyer</groupId>
+                        <groupId>fr.ducloyer.lotr-tcg</groupId>
                         <artifactId>build-tools</artifactId>
                         <version>${project.version}</version>
                     </dependency>
