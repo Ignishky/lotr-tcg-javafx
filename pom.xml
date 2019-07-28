@@ -41,32 +41,11 @@
         <scmPublish.checkoutDirectory>${project.build.directory}/scmpublish</scmPublish.checkoutDirectory>
 
         <!-- Dependencies version -->
-        <guava-version>27.0-jre</guava-version>
-        <gson-version>2.8.5</gson-version>
-        <hamcrest-version>1.3</hamcrest-version>
-        <janino-version>2.4.3</janino-version>
-        <junit-version>4.12</junit-version>
-        <logback-version>1.2.3</logback-version>
-        <lombok-version>1.18.4</lombok-version>
-        <openjfx-version>8u76-b04</openjfx-version>
-        <slf4j-version>1.7.25</slf4j-version>
         <testfx-version>4.0.6-alpha</testfx-version>
 
         <!-- Plugins version -->
-        <clean-plugin-version>3.1.0</clean-plugin-version>
-        <checkstyle-plugin-version>3.0.0</checkstyle-plugin-version>
-        <compiler-plugin-version>3.7.0</compiler-plugin-version>
-        <dependency-plugin-version>3.1.1</dependency-plugin-version>
-        <deploy-plugin-version>2.8.2</deploy-plugin-version>
-        <info-reports-plugin-version>2.9</info-reports-plugin-version>
-        <install-plugin-version>2.5.2</install-plugin-version>
-        <jacoco-plugin-version>0.8.1</jacoco-plugin-version>
-        <jar-plugin-version>3.1.0</jar-plugin-version>
-        <resources-plugin-version>3.1.0</resources-plugin-version>
-        <scm-publish-plugin-version>3.0.0</scm-publish-plugin-version>
-        <site-plugin-version>3.7.1</site-plugin-version>
-        <surefire-plugin-version>2.21.0</surefire-plugin-version>
-        <versions-plugin-version>2.5</versions-plugin-version>
+        <surefire-plugin-version>2.22.1</surefire-plugin-version>
+
     </properties>
 
     <repositories>
@@ -107,35 +86,25 @@
             </dependency>
 
             <dependency>
-                <groupId>com.google.code.gson</groupId>
-                <artifactId>gson</artifactId>
-                <version>${gson-version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>${guava-version}</version>
-            </dependency>
-            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>${lombok-version}</version>
+                <version>1.18.8</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>${slf4j-version}</version>
+                <version>1.7.26</version>
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>${logback-version}</version>
+                <version>1.2.3</version>
                 <scope>runtime</scope>
             </dependency>
             <dependency>
                 <groupId>janino</groupId>
                 <artifactId>janino</artifactId>
-                <version>${janino-version}</version>
+                <version>2.4.3</version>
                 <scope>runtime</scope>
             </dependency>
 
@@ -143,31 +112,13 @@
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
-                <version>${junit-version}</version>
+                <version>4.12</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.hamcrest</groupId>
-                <artifactId>hamcrest-library</artifactId>
-                <version>${hamcrest-version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testfx</groupId>
-                <artifactId>openjfx-monocle</artifactId>
-                <version>${openjfx-version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testfx</groupId>
-                <artifactId>testfx-core</artifactId>
-                <version>${testfx-version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.testfx</groupId>
-                <artifactId>testfx-junit</artifactId>
-                <version>${testfx-version}</version>
+                <artifactId>hamcrest-core</artifactId>
+                <version>2.1</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -178,58 +129,33 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-clean-plugin</artifactId>
-                    <version>${clean-plugin-version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>${resources-plugin-version}</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>${compiler-plugin-version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${surefire-plugin-version}</version>
+                    <version>3.8.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>${jar-plugin-version}</version>
+                    <version>3.1.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>${install-plugin-version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>${deploy-plugin-version}</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>${site-plugin-version}</version>
+                    <version>2.5.2</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>${checkstyle-plugin-version}</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
                     <artifactId>jacoco-maven-plugin</artifactId>
-                    <version>0.8.1</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-dependency-plugin</artifactId>
-                    <version>${dependency-plugin-version}</version>
+                    <version>0.8.4</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -242,10 +168,10 @@
                     <dependency>
                         <groupId>com.puppycrawl.tools</groupId>
                         <artifactId>checkstyle</artifactId>
-                        <version>8.14</version>
+                        <version>8.23</version>
                     </dependency>
                     <dependency>
-                        <groupId>fr.ducloyer.lotr-tcg</groupId>
+                        <groupId>${project.groupId}</groupId>
                         <artifactId>build-tools</artifactId>
                         <version>${project.version}</version>
                     </dependency>
@@ -254,7 +180,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-scm-publish-plugin</artifactId>
-                <version>${scm-publish-plugin-version}</version>
+                <version>3.0.0</version>
                 <inherited>true</inherited>
                 <configuration>
                     <checkoutDirectory>${scmPublish.checkoutDirectory}</checkoutDirectory>
@@ -278,12 +204,12 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>${info-reports-plugin-version}</version>
+                <version>2.9</version>
             </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
-                <version>${versions-plugin-version}</version>
+                <version>2.5</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -310,6 +236,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.1.1</version>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -329,7 +256,6 @@
                 <reportSets>
                     <reportSet>
                         <reports>
-                            <!-- select non-aggregate reports -->
                             <report>report</report>
                         </reports>
                     </reportSet>

@@ -20,8 +20,7 @@ import static fr.ducloyer.lotrtcg.controller.CCard.MIN_HEIGHT;
 import static fr.ducloyer.lotrtcg.controller.CCard.MIN_WIDTH;
 import static fr.ducloyer.lotrtcg.core.model.Card.Side.FREE_PEOPLE;
 import static fr.ducloyer.lotrtcg.core.model.Name.Gandalf;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.hasChildren;
 
@@ -49,9 +48,9 @@ public class CPersonageTest extends AbstractControllerTest {
         CPersonage controller = loader.getController();
         controller.addPersonage(Gandalf);
 
-        verifyThat(controller.getAbstraction().getNbWound(), is(0));
-        verifyThat(controller.getAbstraction().getPersonage(), is(new Card(Gandalf.getCollection(), FREE_PEOPLE, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7, 4)));
-        verifyThat(((TilePane) NODE_FINDER.lookup("#wounds").query()).getChildren(), hasSize(0));
+        verifyThat(controller.getAbstraction().getNbWound(), equalTo(0));
+        verifyThat(controller.getAbstraction().getPersonage(), equalTo(new Card(Gandalf.getCollection(), FREE_PEOPLE, "Gandalf", "/card/Fellowship/LOTR-EN01364.jpg", 7, 4)));
+        verifyThat(((TilePane) NODE_FINDER.lookup("#wounds").query()).getChildren().size(), equalTo(0));
     }
 
     @Test
@@ -65,9 +64,9 @@ public class CPersonageTest extends AbstractControllerTest {
         ObservableList<Node> wounds = NODE_FINDER.lookup("#wounds").<TilePane>query().getChildren();
         // Wait for all runLater calls to end
         Thread.sleep(500);
-        verifyThat(wounds, hasSize(3));
-        verifyThat(((LocatedImage)((ImageView) wounds.get(0)).getImage()).getUrl(), is("/images/wound.png"));
-        verifyThat(((LocatedImage)((ImageView) wounds.get(1)).getImage()).getUrl(), is("/images/wound.png"));
-        verifyThat(((LocatedImage)((ImageView) wounds.get(2)).getImage()).getUrl(), is("/images/wound.png"));
+        verifyThat(wounds.size(), equalTo(3));
+        verifyThat(((LocatedImage) ((ImageView) wounds.get(0)).getImage()).getUrl(), equalTo("/images/wound.png"));
+        verifyThat(((LocatedImage) ((ImageView) wounds.get(1)).getImage()).getUrl(), equalTo("/images/wound.png"));
+        verifyThat(((LocatedImage) ((ImageView) wounds.get(2)).getImage()).getUrl(), equalTo("/images/wound.png"));
     }
 }

@@ -12,11 +12,14 @@ import org.testfx.service.finder.NodeFinder;
 
 import java.io.IOException;
 
-import static fr.ducloyer.lotrtcg.controller.CCard.*;
+import static fr.ducloyer.lotrtcg.controller.CCard.HEIGHT;
+import static fr.ducloyer.lotrtcg.controller.CCard.MIN_HEIGHT;
+import static fr.ducloyer.lotrtcg.controller.CCard.MIN_WIDTH;
+import static fr.ducloyer.lotrtcg.controller.CCard.WIDTH;
 import static fr.ducloyer.lotrtcg.core.model.Name.Gandalf;
 import static fr.ducloyer.lotrtcg.utils.ImageMatchers.hasImage;
 import static javafx.scene.input.MouseButton.SECONDARY;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
 
@@ -40,8 +43,8 @@ public class CCardTest extends AbstractControllerTest {
         ImageView card = NODE_FINDER.lookup("#card").query();
 
         verifyThat(card, isVisible());
-        verifyThat(card.getFitWidth(), is(MIN_WIDTH));
-        verifyThat(card.getFitHeight(), is(MIN_HEIGHT));
+        verifyThat(card.getFitWidth(), equalTo(MIN_WIDTH));
+        verifyThat(card.getFitHeight(), equalTo(MIN_HEIGHT));
         verifyThat((LocatedImage) card.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
     }
 
@@ -54,17 +57,17 @@ public class CCardTest extends AbstractControllerTest {
 
         ImageView zoom = NODE_FINDER.lookup("#zoom").query();
         verifyThat(zoom, isVisible());
-        verifyThat(zoom.getFitWidth(), is(WIDTH));
-        verifyThat(zoom.getFitHeight(), is(HEIGHT));
+        verifyThat(zoom.getFitWidth(), equalTo(WIDTH));
+        verifyThat(zoom.getFitHeight(), equalTo(HEIGHT));
         verifyThat((LocatedImage) zoom.getImage(), hasImage("/card/Fellowship/LOTR-EN01364.jpg"));
 
         Stage stage = (Stage) zoom.getScene().getWindow();
-        verifyThat(stage.isShowing(), is(true));
-        verifyThat(stage.getTitle(), is("Zoom on Gandalf"));
+        verifyThat(stage.isShowing(), equalTo(true));
+        verifyThat(stage.getTitle(), equalTo("Zoom on Gandalf"));
         verifyThat((LocatedImage) stage.getIcons().get(0), hasImage("/images/ring-icon-32.png"));
 
         clickOn(zoom, SECONDARY);
 
-        verifyThat(stage.isShowing(), is(false));
+        verifyThat(stage.isShowing(), equalTo(false));
     }
 }

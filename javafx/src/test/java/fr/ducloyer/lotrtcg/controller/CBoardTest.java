@@ -19,8 +19,12 @@ import org.testfx.service.finder.NodeFinder;
 
 import java.io.IOException;
 
-import static fr.ducloyer.lotrtcg.core.model.Name.*;
-import static org.hamcrest.Matchers.*;
+import static fr.ducloyer.lotrtcg.core.model.Name.Frodo;
+import static fr.ducloyer.lotrtcg.core.model.Name.Gandalf;
+import static fr.ducloyer.lotrtcg.core.model.Name.GoblinMarksman;
+import static fr.ducloyer.lotrtcg.core.model.Name.MoriaScout;
+import static org.hamcrest.CoreMatchers.endsWith;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.testfx.api.FxAssert.verifyThat;
 import static org.testfx.matcher.base.NodeMatchers.isInvisible;
 import static org.testfx.matcher.base.NodeMatchers.isVisible;
@@ -63,10 +67,10 @@ public class CBoardTest extends AbstractControllerTest {
         verifyThat(minion2, isInvisible());
 
         verifyThat(fight, isVisible());
-        verifyThat(fight.getLayoutX(), is(100.0));
-        verifyThat(fight.getLayoutY(), is(328.0));
+        verifyThat(fight.getLayoutX(), equalTo(100.0));
+        verifyThat(fight.getLayoutY(), equalTo(328.0));
 
-        verifyThat(info.getText(), is("Play card Frodo.\nPlay card Goblin Marksman.\n"));
+        verifyThat(info.getText(), equalTo("Play card Frodo.\nPlay card Goblin Marksman.\n"));
     }
 
     @Test
@@ -90,13 +94,13 @@ public class CBoardTest extends AbstractControllerTest {
 
         initPersonages(Frodo, 0, Gandalf, GoblinMarksman, MoriaScout, 0);
 
-        verifyThat(fight.getText(), is("Fight"));
+        verifyThat(fight.getText(), equalTo("Fight"));
         clickOn("#action");
 
-        verifyThat(fight.getText(), is("Fight"));
+        verifyThat(fight.getText(), equalTo("Fight"));
         clickOn("#action");
 
-        verifyThat(fight.getText(), is("Next turn"));
+        verifyThat(fight.getText(), equalTo("Next turn"));
     }
 
     @Test
@@ -132,7 +136,7 @@ public class CBoardTest extends AbstractControllerTest {
 
         clickOn("#action"); // fight 1
 
-        verifyThat(fight.getText(), is("Next turn"));
+        verifyThat(fight.getText(), equalTo("Next turn"));
     }
 
     @Test
@@ -146,7 +150,7 @@ public class CBoardTest extends AbstractControllerTest {
         clickOn("#action"); // fight 1
 
         verifyThat(info.getText(), endsWith("Frodo has been killed. YOU LOOSE !!!!\n"));
-        verifyThat(fight.isDisabled(), is(true));
+        verifyThat(fight.isDisabled(), equalTo(true));
     }
 
     private void initPersonages(Name companion1, int nbWoundC1, Name companion2, Name minion1, Name minion2, int nbWoundM2) {
@@ -161,9 +165,9 @@ public class CBoardTest extends AbstractControllerTest {
         verifyThat(personage, isVisible());
 
         ObservableList<Node> wounds = NODE_FINDER.lookup("#wounds").<TilePane> query().getChildren();
-        verifyThat(wounds, hasSize(nbWounds));
+        verifyThat(wounds.size(), equalTo(nbWounds));
         for (Node wound : wounds) {
-            verifyThat(((LocatedImage) ((ImageView) wound).getImage()).getUrl(), is("/images/wound.png"));
+            verifyThat(((LocatedImage) ((ImageView) wound).getImage()).getUrl(), equalTo("/images/wound.png"));
         }
     }
 }

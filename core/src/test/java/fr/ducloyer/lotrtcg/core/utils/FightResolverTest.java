@@ -3,11 +3,14 @@ package fr.ducloyer.lotrtcg.core.utils;
 import fr.ducloyer.lotrtcg.core.model.Personage;
 import org.junit.Test;
 
-import static fr.ducloyer.lotrtcg.core.model.Name.*;
+import static fr.ducloyer.lotrtcg.core.model.Name.Frodo;
+import static fr.ducloyer.lotrtcg.core.model.Name.Gandalf;
+import static fr.ducloyer.lotrtcg.core.model.Name.GoblinMarksman;
+import static fr.ducloyer.lotrtcg.core.model.Name.MoriaScout;
 import static fr.ducloyer.lotrtcg.core.utils.FightResolver.fight;
 import static fr.ducloyer.lotrtcg.core.utils.FightResult.Actions.KILL;
 import static fr.ducloyer.lotrtcg.core.utils.FightResult.Actions.WOUND;
-import static org.hamcrest.Matchers.is;
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class FightResolverTest {
@@ -19,7 +22,7 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, is(new FightResult(WOUND, companion)));
+        assertThat(fightResult, equalTo(new FightResult(WOUND, companion)));
     }
 
     @Test
@@ -29,7 +32,7 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, is(new FightResult(WOUND, companion)));
+        assertThat(fightResult, equalTo(new FightResult(WOUND, companion)));
     }
 
     @Test
@@ -39,7 +42,7 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, is(new FightResult(WOUND, minion)));
+        assertThat(fightResult, equalTo(new FightResult(WOUND, minion)));
     }
 
     @Test
@@ -50,6 +53,6 @@ public class FightResolverTest {
 
         FightResult fightResult = fight(companion, minion);
 
-        assertThat(fightResult, is(new FightResult(KILL, minion)));
+        assertThat(fightResult, equalTo(new FightResult(KILL, minion)));
     }
 }
